@@ -1,3 +1,4 @@
+# 處理回傳資料
 from flask import Flask, render_template, request, jsonify, json
 
 app = Flask(__name__)
