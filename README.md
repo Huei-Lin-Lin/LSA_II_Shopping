@@ -6,6 +6,7 @@
 - [References](#referencesa)
 - [未來展望](#future)
 ## 架構
+```bash=
 .
 ├── Dockerfile
 ├── ajax.py
@@ -19,8 +20,8 @@
 │   └── script.js
 └── templates
     └── data.html  
+```
 
-    
 ## <a id="Concept_Develop">Concept Development 發展理念</a>
 
 ## <a id=install>安裝 & 設定過程</a>
