@@ -1,5 +1,10 @@
 # LSA_II_Shopping
-[TOC]
+- [Concept Development](#a-id"conceptdevelop"aconcept-development-發展理念)
+- [安裝 & 設定過程](#a-idinstall安裝--設定過程a)
+- [LSA課堂知識運用](#a-idlsaclasslsa-課堂知識運用a)
+- [Job Assignment](#a-idjobjobassigna)
+- [References](#a-idreferencesreferencesa)
+- [未來展望](#a-idfuture未來展望a)
 ## 架構
 .
 ├── Dockerfile
@@ -14,9 +19,9 @@
 │   └── script.js
 └── templates
     └── data.html
-## Concept Development 發展理念
+## <a id="Concept_Develop">Concept Development 發展理念</a>
 
-## 安裝 & 設定過程
+## <a id=install>安裝 & 設定過程</a>
 ### 基本環境設置
 * 作業系統：Linux
 * Linux 安裝 Docker
@@ -79,22 +84,22 @@ docker pull 108213052/flasklsa
     bash start.sh
     ```
 
-## LSA 課堂知識運用
+## <a id='LSAclass'>LSA 課堂知識運用</a>
 * [Docker](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO) : Docker 基本指令
 
 
-## Job_Assign
+## <a id='job'>Job_Assign</a>
 
 | 組員      | 工作分配 |
 | -------- | -------- | 
 | 林惠霖    | 後端、爬蟲 | 
 | 楊心慈    | 前端、docker |
 
-## References
+## <a id='References'>References</a>
 * Docker
     * [Python Flask](https://chentsungyu.github.io/2020/04/26/DevOps/Docker/[DevOps]%20Docker%E5%8C%96%E4%BD%A0%E7%9A%84Python%20Flask%20APP%20%E4%B8%A6%E4%B8%8A%E5%82%B3%E8%87%B3Docker%20Hub/)
     * [Build a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04)
 * 網頁
     * [Flask 網頁設計](https://ithelp.ithome.com.tw/articles/10258223?sc=pt)
 
-## 未來展望
+## <a id='future'>未來展望</a>
