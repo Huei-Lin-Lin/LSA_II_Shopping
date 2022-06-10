@@ -1,13 +1,14 @@
 # LSA_II_Shopping
 - [Concept Development](#Concept_Develop)
-- [安裝 & 設定過程](#install)
-- [LSA課堂知識運用](#lsaclass)
+- [Install & Settings](#install)
+- [LSA 課堂知識運用](#lsaclass)
 - [Job Assignment](#job)
 - [References](#referencesa)
 - [未來展望](#future)
+
 ## 架構
-```bash=
-.
+```bash
+. DFflask
 ├── Dockerfile
 ├── ajax.py
 ├── requirements.txt
