@@ -8,9 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from string import digits
 
 # chrome 執行檔的路徑
-# PATH = "C:/chromedriver_win32/chromedriver.exe" 
+PATH = "C:/chromedriver_win32/chromedriver.exe" 
 # PATH = "/usr/lib/chromium-browser/chromedriver"
-PATH = "/Users/yst/Library/Application Support/Google/Chrome/Default"
+# PATH = "/Users/yst/Library/Application Support/Google/Chrome/Default"
 
 # 使用者需要輸入的內容
 recipe = "番茄炒蛋"

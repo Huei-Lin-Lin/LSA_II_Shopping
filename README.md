@@ -11,7 +11,11 @@
 . DFflask
 ├── Dockerfile
 ├── ajax.py
+├── crawlerBeautifulSoup.py
+├── crawlerRecipe.py
+├── docker-compose.yml
 ├── requirements.txt
+├── seleniumDockerTest.py
 ├── start.sh
 ├── static
 │   ├── data
@@ -20,7 +24,7 @@
 │   ├── jquery-3.6.0.min.js
 │   └── script.js
 └── templates
-    └── data.html  
+    └── data.html
 ```
 
 ## <a id="Concept_Develop">Concept Development 發展理念</a>
@@ -37,11 +41,8 @@
 ## <a id=install>安裝 & 設定過程</a>
 ### 基本環境設置
 * 作業系統：Linux
-* Linux 安裝 Docker
-    ```bash=
-    sudo apt-get install -y curl
-    curl -s https://get.docker.com | sudo sh 
-    ```
+* [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+* [Install Docker Compose CLI plugin](https://docs.docker.com/compose/install/compose-plugin/#install-the-plugin-manually)
 * 安裝 `selenium`
     ```bash=
     pip install selenium
@@ -59,10 +60,6 @@
         ![](https://i.imgur.com/4dc1LRr.png)
     * 進入此[連結](https://sites.google.com/chromium.org/driver/)下載 ChromeDriver
     ![](https://i.imgur.com/34eXpKM.png)
-* 接下來為 Flask and Docker 的基本設置除了可以跟著下面步驟執行外也可直接從 docker `pull` 最終 image
-    ```bash=
-    docker pull 108213052/flasklsa
-    ```
 ### Flask
 * 進入使用者家目錄
     ```bash=
@@ -99,6 +96,9 @@
 
 ## <a id='LSAclass'>LSA 課堂知識運用</a>
 * [Docker](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO) : Docker 基本指令
+    * docker remove none images : `docker image prune --filter="dangling=true"`
+    * container : `sudo apt-get update`、`sudo apt-get install vim`
+* directory 複製 : `cp -a <source>/. <destination>`
 
 
 ## <a id='job'>Job_Assign</a>
@@ -112,6 +112,8 @@
 * Docker
     * [Python Flask](https://chentsungyu.github.io/2020/04/26/DevOps/Docker/[DevOps]%20Docker%E5%8C%96%E4%BD%A0%E7%9A%84Python%20Flask%20APP%20%E4%B8%A6%E4%B8%8A%E5%82%B3%E8%87%B3Docker%20Hub/)
     * [Build a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04)
+    * [Run Selenium Tests in Docker](https://www.browserstack.com/guide/run-selenium-tests-in-docker)
+    * [Compose file build reference](https://docs.docker.com/compose/compose-file/build/)
 * 網頁
     * [Flask 網頁設計](https://ithelp.ithome.com.tw/articles/10258223?sc=pt)
 

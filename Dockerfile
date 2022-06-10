@@ -15,7 +15,7 @@ COPY --chown=app:app requirements.txt requirements.txt
 
 ENV PATH="/home/app/.local/bin:${PATH}"
 
-RUN pip3 install --user -r requirements.txt 
+RUN pip3 install --user -r requirements.txt
 
 # run container 時要執行的命令
 COPY --chown=app:app . .
