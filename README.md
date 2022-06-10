@@ -52,9 +52,9 @@
     * 進入此連結下載 ChromeDriver：https://sites.google.com/chromium.org/driver/
     * ![](https://i.imgur.com/34eXpKM.png)
 * 以下步驟也可直接從 docker pull
-```bash=
-docker pull 108213052/flasklsa
-```
+    ```bash=
+    docker pull 108213052/flasklsa
+    ```
 ### Flask
 * 進入使用者家目錄
     ```bash=
