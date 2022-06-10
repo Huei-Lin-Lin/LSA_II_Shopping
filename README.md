@@ -24,6 +24,15 @@
 ```
 
 ## <a id="Concept_Develop">Concept Development 發展理念</a>
+### 起因
+隨著畢業季的到來，身邊的朋友將為了前程各奔東西，這可能是大家最後一次見面了
+因此，在離開前 MOLi 地縛靈希望能一起吃一頓飯，每個人自己準備一道料理。
+但平時大家都只會準備一人份的量，突然要準備那麼多人的份量並計算所花費的價錢，可能都沒有經驗，所以我們想試試看能不能做出能讓人根據菜單及人數推估出來食材份量及總花費的網頁工具。
+
+### 功能
+* 查詢料理方式
+* 列出食材清單
+* 提供食材現價
 
 ## <a id=install>安裝 & 設定過程</a>
 ### 基本環境設置
@@ -45,7 +54,7 @@
         * 執行這個 python 檔
         * 如果可以執行的話代表安裝成功
 * 下載跟 Google Chrome 同樣版本的 ChromeDriver
-    * 先查看瀏覽器的版本 : 左上角的三個圓點 => 說明 => 關於 Google Chrome
+    * 先查看瀏覽器的版本 : 左上角的三個圓點 :point_right: 說明 :point_right: 關於 Google Chrome
         ![](https://i.imgur.com/ZgGJlbt.png)
         ![](https://i.imgur.com/4dc1LRr.png)
     * 進入此[連結](https://sites.google.com/chromium.org/driver/)下載 ChromeDriver
@@ -107,3 +116,6 @@
     * [Flask 網頁設計](https://ithelp.ithome.com.tw/articles/10258223?sc=pt)
 
 ## <a id='future'>未來展望</a>
+* 單次記帳
+* 會員
+* 把估價內容寄到自己的信箱
