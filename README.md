@@ -45,14 +45,12 @@
         * 執行這個 python 檔
         * 如果可以執行的話代表安裝成功
 * 下載跟 Google Chrome 同樣版本的 ChromeDriver
-    * 先查看瀏覽器的版本
-        * 查看瀏覽器的版本
-        * 左上角的三個圓點 => 說明 => 關於 Google Chrome
-        * ![](https://i.imgur.com/ZgGJlbt.png)
-        * ![](https://i.imgur.com/4dc1LRr.png)
-    * 進入此連結下載 ChromeDriver：https://sites.google.com/chromium.org/driver/
-    * ![](https://i.imgur.com/34eXpKM.png)
-* 以下步驟也可直接從 docker pull
+    * 先查看瀏覽器的版本 : 左上角的三個圓點 => 說明 => 關於 Google Chrome
+        ![](https://i.imgur.com/ZgGJlbt.png)
+        ![](https://i.imgur.com/4dc1LRr.png)
+    * 進入此[連結](https://sites.google.com/chromium.org/driver/)下載 ChromeDriver
+    ![](https://i.imgur.com/34eXpKM.png)
+* 接下來為 Flask and Docker 的基本設置除了可以跟著下面步驟執行外也可直接從 docker `pull` 最終 image
     ```bash=
     docker pull 108213052/flasklsa
     ```
