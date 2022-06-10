@@ -1,10 +1,10 @@
 # LSA_II_Shopping
-- [Concept Development](#a-id"conceptdevelop"aconcept-development-發展理念)
-- [安裝 & 設定過程](#a-idinstall安裝--設定過程a)
-- [LSA課堂知識運用](#a-idlsaclasslsa-課堂知識運用a)
-- [Job Assignment](#a-idjobjobassigna)
-- [References](#a-idreferencesreferencesa)
-- [未來展望](#a-idfuture未來展望a)
+- [Concept Development](#Concept_Develop)
+- [安裝 & 設定過程](#install)
+- [LSA課堂知識運用](#lsaclass)
+- [Job Assignment](#job)
+- [References](#referencesa)
+- [未來展望](#future)
 ## 架構
 .
 ├── Dockerfile
@@ -19,9 +19,9 @@
 │   └── script.js
 └── templates
     └── data.html
-## <a id="Concept_Develop">Concept Development 發展理念</a>
+## <a id="Concept_Develop"></a>Concept Development 發展理念
 
-## <a id=install>安裝 & 設定過程</a>
+## <a id=install></a>安裝 & 設定過程
 ### 基本環境設置
 * 作業系統：Linux
 * Linux 安裝 Docker
