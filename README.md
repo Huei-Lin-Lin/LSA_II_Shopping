@@ -70,16 +70,18 @@
     * ajax.py
 ### Docker
 * 建立 `Dockerfile` : 建構 container 基本資訊
-    * （file 位置`/home/<user>/DFlask/Dockerfile`）
+    * （file 位置 `/home/<user>/DFlask/Dockerfile`）
     ```bash=
     vim Dockerfile
     ```
 * 創建 `requirements.txt` : 寫入需安裝的 plugin
+    * （file 位置 `/home/<user>/DFlask/requirements.txt`）
     ```bash=
     vim requirements.txt
     ```
 ### 執行
 * 創建 `start.sh` : 存放建立 docker image and run container 之指令
+    * （file 位置 `/home/<user>/DFlask/start.sh`）
     ```bash=
     vim start.sh
     ```
