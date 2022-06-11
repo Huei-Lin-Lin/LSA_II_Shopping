@@ -8,23 +8,26 @@
 
 ## 架構
 ```bash
-. DFflask
+.
+├── ArrangeData.py
 ├── Dockerfile
+├── README.md
+├── VegetableQuotation.py
 ├── ajax.py
-├── crawlerBeautifulSoup.py
 ├── crawlerRecipe.py
 ├── docker-compose.yml
 ├── requirements.txt
-├── seleniumDockerTest.py
-├── start.sh
 ├── static
 │   ├── data
 │   │   ├── input.json
 │   │   └── message.json
 │   ├── jquery-3.6.0.min.js
 │   └── script.js
-└── templates
-    └── data.html
+├── templates
+│   └── data.html
+└── testfile
+    ├── bot.py
+    └── seleniumDockerTest.py
 ```
 
 ## <a id="Concept_Develop">Concept Development 發展理念</a>
@@ -38,28 +41,42 @@
 * 列出食材清單
 * 提供食材現價
 
-## <a id=install>安裝 & 設定過程</a>
+## <a id=install>Install & Settings</a>
 ### 基本環境設置
 * 作業系統：Linux
 * [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 * [Install Docker Compose CLI plugin](https://docs.docker.com/compose/install/compose-plugin/#install-the-plugin-manually)
-* 安裝 `selenium`
+
+### 安裝 `selenium`
+```bash=
+pip install selenium
+```
+* 測試看看有沒有安裝成功
+    * 建立一個 python 檔案
     ```bash=
-    pip install selenium
+    import selenium
     ```
-    * 測試看看有沒有安裝成功
-        * 建立一個 python 檔案
-        ```bash=
-        import selenium
-        ```
-        * 執行這個 python 檔
-        * 如果可以執行的話代表安裝成功
+    * 執行這個 python 檔
+    * 如果可以執行的話代表安裝成功
 * 下載跟 Google Chrome 同樣版本的 ChromeDriver
     * 先查看瀏覽器的版本 : 左上角的三個圓點 :point_right: 說明 :point_right: 關於 Google Chrome
         ![](https://i.imgur.com/ZgGJlbt.png)
-        ![](https://i.imgur.com/4dc1LRr.png)
-    * 進入此[連結](https://sites.google.com/chromium.org/driver/)下載 ChromeDriver
-    ![](https://i.imgur.com/34eXpKM.png)
+        ![](https://i.imgur.com/4dc1LRr.png =70%x)
+* 進入此[連結](https://sites.google.com/chromium.org/driver/)選擇跟瀏覽器相同的版本
+![](https://i.imgur.com/34eXpKM.png)
+* 選擇跟自己作業系統相同的壓縮檔
+    ![](https://i.imgur.com/K5vkSkE.png =70%x)
+* 解壓縮 
+    ![](https://i.imgur.com/NQzTFiM.png =70%x)
+* 選擇檔案要放在哪個路徑下，**要記好這個路徑在哪，等下要用到**
+    ![](https://i.imgur.com/IEeAJ6u.png =70%x)
+* 把這個路徑放到 `crawlerRecipe.py`、`VegetableQuotation.py` 兩個檔案中
+    * `crawlerRecipe.py`
+        ![](https://i.imgur.com/J4qdAZd.png =70%x)
+    * `VegetableQuotation.py`
+        ![](https://i.imgur.com/3EGQpzs.png =70%x)
+
+
 ### Flask
 * 進入使用者家目錄
     ```bash=
@@ -69,9 +86,7 @@
     ```bash=
     mkdir -p DFlask/static DFlask/templates 
     ```
-* 開始寫網頁
-    * data.html 
-    * ajax.py
+* 開始用 Flask 寫網頁
 ### Docker
 * 建立 `Dockerfile` : 建構 container 基本資訊
     * （file 位置 `/home/<user>/DFlask/Dockerfile`）
@@ -83,30 +98,61 @@
     ```bash=
     vim requirements.txt
     ```
-### 執行
-* 創建 `start.sh` : 存放建立 docker image and run container 之指令
-    * （file 位置 `/home/<user>/DFlask/start.sh`）
+### docker-compose
+* 建立 `docker-compose.yml` 
+    * （file 位置 `/home/<user>/DFlask/compose.yml`）
     ```bash=
-    vim start.sh
+    vim docker-compose.yml
     ```
-* 啟動
+* 創建 docker-compose
     ```bash=
-    bash start.sh
+    docker-compose build
     ```
+* 啟動 docker-compose
+    ```bash=
+    docker-compose up
+    ```
+* 結束
+    ```bash=
+    Control + C
+    or
+    docker-compose down
+    ```
+    
 
 ## <a id='LSAclass'>LSA 課堂知識運用</a>
-* [Docker](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO) : Docker 基本指令
-    * docker remove none images : `docker image prune --filter="dangling=true"`
-    * container : `sudo apt-get update`、`sudo apt-get install vim`
-* directory 複製 : `cp -a <source>/. <destination>`
+* Docker : 
+    * [Docker 基本指令](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO)
+    * docker remove ``<none>`` images : 
+        ```bash=
+        docker image prune --filter="dangling=true"
+        ````
+    * 進入 container 編輯 :
+        ````bash=
+        sudo apt-get update
+        sudo apt-get install vim
+        ````
+* docker-compose : 
+    * 查看 docker-compose
+        ```bash=
+        docker-compose ps
+        ````
+* directory 複製 :
+    ```bash=
+    cp -a <source>/. <destination>
+    ```
+* directory or file rename :
+    ```bash=
+    mv <old_name> <new_name>
+    ```
 
 
 ## <a id='job'>Job_Assign</a>
 
 | 組員      | 工作分配 |
 | -------- | -------- | 
-| 林惠霖    | 後端、爬蟲 | 
-| 楊心慈    | 前端、docker |
+| 林惠霖    | Selenium | 
+| 楊心慈    | Docker, Flask |
 
 ## <a id='References'>References</a>
 * Docker
@@ -116,6 +162,7 @@
     * [Compose file build reference](https://docs.docker.com/compose/compose-file/build/)
 * 網頁
     * [Flask 網頁設計](https://ithelp.ithome.com.tw/articles/10258223?sc=pt)
+    * [selenium 網頁自動化、網路爬蟲](https://www.youtube.com/watch?v=ximjGyZ93YQ&t=1362s&ab_channel=GrandmaCan-%E6%88%91%E9%98%BF%E5%AC%A4%E9%83%BD%E6%9C%83)
 
 ## <a id='future'>未來展望</a>
 * 單次記帳
