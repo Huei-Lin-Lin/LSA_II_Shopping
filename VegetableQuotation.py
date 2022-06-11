@@ -67,7 +67,7 @@ for i in range(len(foodList)):
     try:
         # FIXME 點連結的方式要改
         # 進入指定蔬菜的連結
-        url =  linkDict[foodList[i]][index]
+        url =  linkDict[foodList[i]]
         driver.get(url)
         WebDriverWait(driver, 50, 0.5).until(
             EC.presence_of_element_located((By.CLASS_NAME, "text-left"))
