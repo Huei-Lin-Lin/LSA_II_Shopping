@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.options import Options
 driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
 # driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
 
-foodList = ['火鍋牛肉片', '青椒紅椒黃椒', '杏鮑菇', '蔥', '蒜頭', '薑泥', '蛋黃', '太白粉', '清酒', '醬油', '油膏', '清酒', '水', '紅糖（黑糖）', '玉米粉']
+foodList = ['火鍋牛肉片', '青椒', '紅椒', '黃椒', '杏鮑菇', '蔥', '蒜頭', '薑泥', '玉米粉']
 index = 0 # 選第幾個搜尋結果，例如芒果有 8 個結果，那就進入第 index 的連結
 linkDict = dict() # 各食材搜尋連結
 QuotationResult = dict() # 蔬菜估價結果
@@ -53,6 +53,7 @@ for i in range(len(foodList)):
     except:
         print("找不到相關的資料")
         linkDict[foodList[i]] = None
+        QuotationResult[foodList[i]] = None
         print("回到首頁，搜尋下一個")
         driver.get('https://www.twfood.cc/')
         continue
