@@ -1,66 +1,83 @@
-from re import U
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  # 讓我們可以按鍵盤上的按鍵
 import time 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from string import digits
+import json
+# 引入其他 python 檔案
+import driverPath
 
-# chrome 執行檔的路徑
-# PATH = "C:/chromedriver_win32/chromedriver.exe" 
-PATH = "/usr/lib/chromium-browser/chromedriver"
-# PATH = "/Users/yst/Library/Application Support/Google/Chrome/Default"
+def getRecipeData(url, recipe):
+    # 變數
+    linkList = [] # 抓到的食譜連結
+    ingredArr = [] # 指令食譜的食材
+    ingredUnitArr = [] # 指令食譜食材的數量
+    index = 5
+    path = driverPath.path
 
-# 使用者需要輸入的內容
-recipe = "番茄炒蛋"
-peopleNum = 3 # 人數
+    driver = webdriver.Chrome(path)
+    driver.get(url)
+    # 搜尋
+    search = driver.find_element(By.NAME, "q")
+    search.clear()
+    search.send_keys(recipe)
+    search.send_keys(Keys.RETURN)
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "browse-title-name"))
+    )
 
-# 變數
-linkList = [] # 抓到的食譜連結
-ingredArr = [] # 指令食譜的食材
-ingredUnitArr = [] # 指令食譜食材的數量
+    # 抓食譜連結
+    time.sleep(2)
+    links = driver.find_elements(By.CLASS_NAME, "browse-recipe-link")
+    for link in links:
+        linkList.append(link)
 
-driver = webdriver.Chrome(PATH)
-driver.get("https://icook.tw")
+    # 選定食譜後，進入頁面
+    linkEnter = linkList[index]
+    linkEnter.click()
+    
+    # 抓食材資料
+    headcount = driver.find_element(By.CLASS_NAME, "num").text
+    ingredients = driver.find_elements(By.CLASS_NAME, "ingredient-name")
+    ingredientsUnit = driver.find_elements(By.CLASS_NAME, "ingredient-unit")
+    for ingredient in ingredients:
+        ingredArr.append(ingredient.text)
+    for u in ingredientsUnit:
+        ingredUnitArr.append(u.text)
+    # 卡個 5 秒在關掉
+    time.sleep(2) 
+    driver.quit()
+    ingredentDict = combineList(ingredArr,ingredUnitArr)
+    recipeData = dict()
+    recipeData['headcount'] = headcount
+    recipeData['ingredent'] = ingredentDict
+    # 把資料寫入 json 檔
+    writeJSON(recipeData, "./static/data/backEnd/recipeData.json")
+    # print(recipeData)
+    return headcount, ingredentDict
 
-# 搜尋
-search = driver.find_element_by_name("q")
-search.clear()
-search.send_keys(recipe)
-search.send_keys(Keys.RETURN)
+def combineList(list1, list2):
+    newDICT = dict(zip(list1,list2))
+    return newDICT
 
-WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "browse-title-name"))
-)
+def writeJSON(data, jsonPath):
+    with open(jsonPath, 'w') as f:
+        json.dump(data, f)
+    f.close()
 
-# 抓食譜連結
-links = driver.find_elements_by_class_name("browse-recipe-link")
+def readJSON(path):
+    jsonFile = open(path, 'r')
+    f =  jsonFile.read() # 要先使用 read 讀取檔案
+    a = json.loads(f) # 再使用 loads
+    return a
 
-for link in links:
-    linkList.append(link)
-print("連結陣列 :", linkList)
+def main():
+    inputData = readJSON('./static/data/input.json')
+    recipe = inputData["appInfo"]["name"]
 
-# FIXME
-# 選定食譜後，進入頁面
-linkEnter = linkList[3]
-linkEnter.click()
-
-# 抓食材資料
-headcount = driver.find_element_by_class_name("num").text
-ingredients = driver.find_elements_by_class_name("ingredient-name")
-ingredientsUnit = driver.find_elements_by_class_name("ingredient-unit")
-
-for ingredient in ingredients:
-    ingredArr.append(ingredient.text)
-for u in ingredientsUnit:
-    ingredUnitArr.append(u.text)
-
-print("人數 :", headcount)
-print(ingredArr)
-print(ingredUnitArr) 
-print("================")
-
-# 卡個 5 秒在關掉
-time.sleep(5) 
-driver.quit()
+    url = "https://icook.tw"
+    headcount, ingredentDict = getRecipeData(url, recipe)
+    print(headcount, ingredentDict)
+if __name__ == '__main__':
+    main()
