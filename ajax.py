@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, json
-
+import crawlerRecipe, VegetableQuotation, ArrangeData
+import time 
 app = Flask(__name__)
 
 
@@ -35,6 +36,13 @@ def setDataMessage():
             data = json.load(f)
             print("text : ", data)
         f.close
+        # 進行爬蟲
+        time.sleep(1)
+        crawlerRecipe.main()
+        time.sleep(1)
+        VegetableQuotation.main()
+        time.sleep(1)
+        ArrangeData.main()
         return jsonify(data)
 
 
