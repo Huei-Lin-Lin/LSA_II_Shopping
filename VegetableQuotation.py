@@ -22,9 +22,6 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=options, service=driverPath)
 driver.get('https://www.twfood.cc/')
-# WebDriverWait(driver, 50, 0.5).until(
-#     EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
-# )
 
 for i in range(len(foodList)):
     WebDriverWait(driver, 50, 0.5).until(
@@ -37,8 +34,8 @@ for i in range(len(foodList)):
     search.send_keys(Keys.RETURN)
     try:
         # 顯性等待 DyListCover-hot class 加載出来 20 秒，每 0.5 秒檢查一次
-        WebDriverWait(driver, 50, 0.5).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
+        WebDriverWait(driver, 30, 0.5).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "text-left"))
         )
         linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
 
@@ -56,7 +53,6 @@ for i in range(len(foodList)):
         driver.get('https://www.twfood.cc/')
         continue
 
-    # 進入指定蔬菜的連結
     try:
         # FIXME 點連結的方式要改
         # 進入指定蔬菜的連結
