@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
-# driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
+# driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
+driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
 
 foodList = ['蕃茄', '雞蛋', '鹽', '白糖']
 food = "芒果"
