@@ -160,6 +160,11 @@ pip install selenium
     * [Build a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04)
     * [Run Selenium Tests in Docker](https://www.browserstack.com/guide/run-selenium-tests-in-docker)
     * [Compose file build reference](https://docs.docker.com/compose/compose-file/build/)
+* docker-compose
+    * [Compose file build reference](https://docs.docker.com/compose/compose-file/build/)
+    * [SeleniumHQ
+](https://github.com/SeleniumHQ/docker-selenium)
+    * [Flask+Redis 多服務開發部署 docker compose](https://www.youtube.com/watch?v=lXuw2sncltE&t=371s)
 * 網頁
     * [Flask 網頁設計](https://ithelp.ithome.com.tw/articles/10258223?sc=pt)
     * [selenium 網頁自動化、網路爬蟲](https://www.youtube.com/watch?v=ximjGyZ93YQ&t=1362s&ab_channel=GrandmaCan-%E6%88%91%E9%98%BF%E5%AC%A4%E9%83%BD%E6%9C%83)
