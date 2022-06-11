@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
-# PATH = "/usr/lib/chromium-browser/chromedriver"
+# driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
+driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
 
 foodList = ['蕃茄', '雞蛋', '鹽', '白糖']
 food = "芒果"
@@ -22,7 +22,9 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=options, service=driverPath)
 driver.get('https://www.twfood.cc/')
-
+WebDriverWait(driver, 50, 0.5).until(
+    EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
+)
 
 for i in range(len(foodList)):
     WebDriverWait(driver, 50, 0.5).until(
