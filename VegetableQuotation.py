@@ -9,9 +9,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
+# driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
 
-foodList = ['蕃茄', '雞蛋', '鹽', '白糖']
-food = "芒果"
+foodList = ['火鍋牛肉片', '青椒紅椒黃椒', '杏鮑菇', '蔥', '蒜頭', '薑泥', '蛋黃', '太白粉', '清酒', '醬油', '油膏', '清酒', '水', '紅糖（黑糖）', '玉米粉']
 index = 0 # 選第幾個搜尋結果，例如芒果有 8 個結果，那就進入第 index 的連結
 linkDict = dict() # 各食材搜尋連結
 QuotationResult = dict() # 蔬菜估價結果
@@ -32,13 +32,10 @@ for i in range(len(foodList)):
     search.send_keys(foodList[i])
     search.send_keys(Keys.RETURN)
     try:
-        print("OK 1")
         # 顯性等待 DyListCover-hot class 加載出来 20 秒，每 0.5 秒檢查一次
         WebDriverWait(driver, 50, 0.5).until(
             EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
         )
-        print("OK 2")
-
         # linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
         # print("OK 3")
         # links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
@@ -49,12 +46,10 @@ for i in range(len(foodList)):
         # print("OK 5")
 
         link = driver.find_element(By.CLASS_NAME, "text-left").find_element(By.TAG_NAME, "a").get_attribute("href")
-        print("OK 3")
         linkDict[foodList[i]] = link
         # linkDict[foodList[i]] = linkArr
         print("回到首頁，搜尋下一個")
         driver.get('https://www.twfood.cc/')
-        print("OK 6")
     except:
         print("找不到相關的資料")
         linkDict[foodList[i]] = None
