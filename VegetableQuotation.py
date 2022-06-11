@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-# driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
 driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
 
 foodList = ['蕃茄', '雞蛋', '鹽', '白糖']
@@ -82,6 +81,7 @@ for i in range(len(foodList)):
         driver.get('https://www.twfood.cc/')
     except:
         print("進入連結失敗，回到首頁")
+        QuotationResult[foodList[i]] = None
         driver.get('https://www.twfood.cc/')
 
 print("各食材搜尋連結", linkDict)
