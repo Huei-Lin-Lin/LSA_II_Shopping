@@ -39,7 +39,7 @@ for i in range(len(foodList)):
             EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
         )
         print("OK 2")
-        # time.sleep(5)
+        time.sleep(5)
         # linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
         print("OK 3")
         links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
