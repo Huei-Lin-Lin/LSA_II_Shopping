@@ -30,7 +30,7 @@
     └── seleniumDockerTest.py
 ```
 
-## <a id="Concept_Develop">Concept Development 發展理念</a>
+## <a id="Concept_Develop">Concept Development</a>
 ### 起因
 隨著畢業季的到來，身邊的朋友將為了前程各奔東西，這可能是大家最後一次見面了
 因此，在離開前 MOLi 地縛靈希望能一起吃一頓飯，每個人自己準備一道料理。
