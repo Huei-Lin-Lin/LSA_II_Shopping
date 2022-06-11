@@ -22,14 +22,17 @@ def combine_Num_Unit(array):
 
 def UpdateIngredUnitArr(originalQuantity, crawlHeadcount, userNum):
     sortArray = divide_Num_Unit(originalQuantity) # 整理後的食材量，使用量和單位分開
+    print(sortArray)
     copyArray = copy.deepcopy(sortArray) # 複製一份 sortArray
     # 人數轉換
     for i in range(len(copyArray)):
         # 原本食譜的數量``
         num = copyArray[i][0]
+        if (num == ''):
+            continue
         if(num != '' and crawlHeadcount != '' and userNum != ''):
             # 根據使用者輸入的人數作換算
-            newNum = round((int(num)/int(crawlHeadcount)*int(userNum)), 1)
+            newNum = round((float(num)/float(crawlHeadcount)*float(userNum)), 1)
             # 更新食譜數量
             copyArray[i][0] = newNum
     # 更新後的食譜
