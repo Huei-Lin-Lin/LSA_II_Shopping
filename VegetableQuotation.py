@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 # 引入其他 python 檔案
-import config
+import driverPath
 
 # 檢查 element 是否存在
 def isElementExist(driver, by, value):
@@ -24,7 +24,7 @@ def getQuotationResult(url, foodList):
 
     # to supress the error messages/logs
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(options=options, service=config.driverPath)
+    driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
     driver.get(url)
 
     for i in range(len(foodList)):
