@@ -35,8 +35,9 @@ for i in range(len(foodList)):
     try:
         # 顯性等待 DyListCover-hot class 加載出来 20 秒，每 0.5 秒檢查一次
         WebDriverWait(driver, 30, 0.5).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "text-left"))
+            EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
         )
+        time.sleep(5)
         linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
 
         links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
