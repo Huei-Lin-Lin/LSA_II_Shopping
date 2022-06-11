@@ -1,14 +1,15 @@
-version: "3.9"
+version: '3.9'
+
 services:
   app:
     build:
       context: .
-    command: python3 ./seleniumDockerTest.py
+    volumes:
+      - .:/app
     depends_on:
-      - chrome
-
-  chrome:
-    image: selenium/standalone-chrome:latest
-    ports:
-      - "4444:4444"
-    shm_size: 2g
+      - selenium
+  selenium:
+    image: selenium/standalone-chrome
+    # ports:
+    #   - 4444:4444
+    # restart: always

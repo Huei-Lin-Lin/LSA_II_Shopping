@@ -1,6 +1,3 @@
-<!-- 網頁的主要輸入
-        * 可將使用者輸入寫到檔案 (/static/data/input)
-        * 可讀取檔案內容 (/static/data/message) -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,20 +17,12 @@
 
     <hr>
 
-    <h2>API : POST</h2>
-    <p>APP_ID :
-        <input id="app_id" name="app_id" type="number" />
-    </p>
-    <p>APP_NAME :
+    <h2>Shopping Web</h2>
+    <p>輸入料理名稱 :
         <input id="app_name" name="app_name" type="text" />
     </p>
-    <p>APP_VERSION :
-        <input id="app_version" name="app_version" type="text" />
-    </p>
-    <p>APP_AUTHOR :
-        <input id="app_author" name="app_author" type="text" />
-    <p>APP_REMARK :
-        <input id="app_remark" name="app_remark" type="text" />
+    <p>輸入需準備幾人份 :
+        <input id="app_sum" name="app_sum" type="number" />
     </p>
     <button id="btnPost">POST</button>
     <hr>
@@ -47,11 +36,8 @@
             var $console = $('#console');
             var $btnPost = $('#btnPost');
 
-            var $edtAppId = $('#app_id');
+            var $edtAppSum = $('#app_sum');
             var $edtAppName = $('#app_name');
-            var $edtAppVersion = $('#app_version');
-            var $edtAppAuthor = $('#app_author');
-            var $edtAppRemark = $('#app_remark');
 
             $btnGet.off('click').on('click', function () {
                 $.ajax({
@@ -60,18 +46,11 @@
                     type: 'GET',
                     success: function (data) {
                         $console.text("");
-                        $console.append("data[id] : " + data.appInfo.id + "<br>");
                         $console.append("data[name] : " + data.appInfo.name + "<br>");
-                        $console.append("data[version] : " + data.appInfo.version + "<br>");
-                        $console.append("data[author] : " + data.appInfo.author + "<br>");
-                        $console.append("data[remark] : " + data.appInfo.remark + "<br>");
+                        $console.append("data[sum] : " + data.appInfo.sum + "<br>");
 
-                        $edtAppId.val(data.appInfo.id);
                         $edtAppName.val(data.appInfo.name);
-                        $edtAppVersion.val(data.appInfo.version);
-                        $edtAppAuthor.val(data.appInfo.author);
-                        $edtAppRemark.val(data.appInfo.remark);
-
+                        $edtAppSum.val(data.appInfo.sum);
                     },
                     error: function (xhr) {
                         alert('Ajax request 發生錯誤');
@@ -83,17 +62,15 @@
                 $.ajax({
                     url: '/data/message',
                     data: {
-                        "app_id" : $edtAppId.val() , 
                         "app_name" : $edtAppName.val(),
-                        "app_version" : $edtAppVersion.val(),
-                        "app_author" : $edtAppAuthor.val(),
-                        "app_remark" : $edtAppRemark.val(),
+                        "app_sum" : $edtAppSum.val() ,
 
                     },
                     type: 'POST',
                     success: function (data) {
-                        $console.text("result = ");
-                        $console.append(data.result);
+                        $console.text("");
+                        $console.append("data[name] : " + data.appInfo.name + "<br>");
+                        $console.append("data[sum] : " + data.appInfo.sum + "<br>");
                     },
                     error: function (xhr) {
                         alert('Ajax request 發生錯誤');

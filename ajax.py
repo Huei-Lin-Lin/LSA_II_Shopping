@@ -1,4 +1,3 @@
-# 處理回傳資料
 from flask import Flask, render_template, request, jsonify, json
 
 app = Flask(__name__)
@@ -24,19 +23,20 @@ def setDataMessage():
     if request.method == "POST":
         data = {
             'appInfo': {
-                'id': request.form['app_id'],
                 'name': request.form['app_name'],
-                'version': request.form['app_version'],
-                'author': request.form['app_author'],
-                'remark': request.form['app_remark']
+                'sum': request.form['app_sum']
             }
         }
         print(type(data))
         with open('static/data/input.json', 'w') as f:
             json.dump(data, f) # 使用 json 物件，寫入 json 文字格式到 input.json 檔案
         f.close
-        return jsonify(result='OK')
+        with open('static/data/input.json', 'r') as f:
+            data = json.load(f)
+            print("text : ", data)
+        f.close
+        return jsonify(data)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0', debug=True)
