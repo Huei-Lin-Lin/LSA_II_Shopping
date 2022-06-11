@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-# driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
-driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
+driverPath = Service(r"C:/chromedriver_win32/chromedriver.exe")
+# driverPath = Service(r"/usr/lib/chromium-browser/chromedriver")
 
 foodList = ['蕃茄', '雞蛋', '鹽', '白糖']
 food = "芒果"
@@ -40,15 +40,20 @@ for i in range(len(foodList)):
         )
         print("OK 2")
         time.sleep(5)
+
         # linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
+        # print("OK 3")
+        # links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
+        # print("OK 4")
+        # linkArr = [] # 放目前食材的所有搜尋連結
+        # for link in links:
+        #     linkArr.append(link.find_element(By.TAG_NAME, "a").get_attribute("href"))
+        # print("OK 5")
+
+        link = driver.find_element(By.CLASS_NAME, "text-left").find_element(By.TAG_NAME, "a").get_attribute("href")
         print("OK 3")
-        links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
-        print("OK 4")
-        linkArr = [] # 放目前食材的所有搜尋連結
-        for link in links:
-            linkArr.append(link.find_element(By.TAG_NAME, "a").get_attribute("href"))
-        print("OK 5")
-        linkDict[foodList[i]] = linkArr
+        linkDict[foodList[i]] = link
+        # linkDict[foodList[i]] = linkArr
         print("回到首頁，搜尋下一個")
         driver.get('https://www.twfood.cc/')
         print("OK 6")
