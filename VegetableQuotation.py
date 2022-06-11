@@ -5,8 +5,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+import json
 # 引入其他 python 檔案
 import driverPath
+
 
 # 檢查 element 是否存在
 def isElementExist(driver, by, value):
@@ -88,13 +90,34 @@ def getQuotationResult(url, foodList):
             driver.get(url)
     print("各食材搜尋連結", linkDict)
     print("蔬菜估價結果", QuotationResult)
+    writeJSON(QuotationResult, "./static/data/backEnd/quotation.json")
     # 卡個 5 秒在關掉
     time.sleep(2) 
     driver.quit()
 
+def writeJSON(data, jsonPath):
+    with open(jsonPath, 'w') as f:
+        json.dump(data, f)
+    f.close()
+
+def readJSON(path):
+    jsonFile = open(path, 'r')
+    f =  jsonFile.read() # 要先使用 read 讀取檔案
+    a = json.loads(f) # 再使用 loads
+    return a
+
+def divideDICT(dict):
+    keyList = []
+    valueList = []
+    for key, value in dict.items():
+        keyList.append(key)
+        valueList.append(value)
+    return keyList, valueList
+
 def main():
-    url = 'https://www.twfood.cc/'
-    foodList = ['火鍋牛肉片', '青椒', '紅椒', '黃椒', '杏鮑菇', '蔥', '蒜頭', '薑泥', '玉米粉']
+    url = 'https://www.twfood.cc/' # 要爬蟲的網址
+    foodDict = readJSON("./static/data/backEnd/recipeData.json")
+    foodList , unitList = divideDICT(foodDict['ingredent'])
     getQuotationResult(url, foodList)
 if __name__ == '__main__':
     main()
