@@ -33,20 +33,25 @@ for i in range(len(foodList)):
     search.send_keys(foodList[i])
     search.send_keys(Keys.RETURN)
     try:
+        print("OK 1")
         # 顯性等待 DyListCover-hot class 加載出来 20 秒，每 0.5 秒檢查一次
         WebDriverWait(driver, 30, 0.5).until(
             EC.presence_of_element_located((By.CLASS_NAME, "slogan"))
         )
-        time.sleep(5)
-        linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
-
+        print("OK 2")
+        # time.sleep(5)
+        # linkTitle = driver.find_element(By.CLASS_NAME, "text-left")
+        print("OK 3")
         links = driver.find_element(By.CLASS_NAME, "search_result").find_elements(By.CLASS_NAME, "text-left")
+        print("OK 4")
         linkArr = [] # 放目前食材的所有搜尋連結
         for link in links:
             linkArr.append(link.find_element(By.TAG_NAME, "a").get_attribute("href"))
+        print("OK 5")
         linkDict[foodList[i]] = linkArr
         print("回到首頁，搜尋下一個")
         driver.get('https://www.twfood.cc/')
+        print("OK 6")
     except:
         print("找不到相關的資料")
         linkDict[foodList[i]] = None
