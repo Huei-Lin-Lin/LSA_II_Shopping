@@ -33,7 +33,7 @@ def getQuotationResult(url, foodList):
     # driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
     driver = webdriver.Remote(
         options=options, 
-        command_executor=driverPath.driverPath
+        command_executor=driverPath.path
     )
     driver.get(url)
 
