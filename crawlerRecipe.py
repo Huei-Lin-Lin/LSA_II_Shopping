@@ -14,9 +14,16 @@ def getRecipeData(url, recipe):
     ingredArr = [] # 指令食譜的食材
     ingredUnitArr = [] # 指令食譜食材的數量
     index = 5
-    path = driverPath.path
 
-    driver = webdriver.Chrome(path)
+    options = webdriver.ChromeOptions() 
+     # to supress the error messages/logs
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_argument('--ignore-ssl-errors=yes')
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--no-sandbox')   
+    options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+
     driver.get(url)
     # 搜尋
     search = driver.find_element(By.NAME, "q")
