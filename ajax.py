@@ -12,7 +12,7 @@ def webapi():
 @app.route('/data/message', methods=['GET'])
 def getDataMessage():
     if request.method == "GET":
-        with open('static/data/message.json', 'r') as f:
+        with open('static/data/input.json', 'r') as f:
             data = json.load(f)
             print("text : ", data)
         f.close
