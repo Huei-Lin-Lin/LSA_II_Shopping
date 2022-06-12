@@ -1,5 +1,3 @@
-from turtle import update
-from numpy import array
 import copy
 import json
 
