@@ -16,17 +16,19 @@
 ├── ajax.py
 ├── crawlerRecipe.py
 ├── docker-compose.yml
+├── driverPath.py
 ├── requirements.txt
 ├── static
 │   ├── data
-│   │   ├── input.json
-│   │   └── message.json
+│   │   ├── afterRecipeData.json
+│   │   ├── quotation.json
+│   │   ├── recipeData.json
+│   │   └── input.json
 │   ├── jquery-3.6.0.min.js
 │   └── script.js
 ├── templates
 │   └── data.html
 └── testfile
-    ├── bot.py
     └── seleniumDockerTest.py
 ```
 
@@ -121,16 +123,35 @@ pip install selenium
     
 
 ## <a id='LSAclass'>LSA 課堂知識運用</a>
+* 整合步驟
+    1. 將 gitnub 的檔案 pull 下來
+    2. 將路徑改成 docker-compose 整合版路徑
+    ```bash=
+    vim driverPath.py
+    ```
+    3. 創建並啟動 docker-compose
+    ```bash=
+    docker-compose up -d --build
+    ```
 * Docker : 
     * [Docker 基本指令](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO)
     * docker remove ``<none>`` images : 
         ```bash=
         docker image prune --filter="dangling=true"
         ````
+    * 下載 images
+        ```bash=
+        docker pull selenium/standalone-chrome
+        docker run -d selenium/standalone-chrome
+        docker exec -it <containerID> bash
+        ```
     * 進入 container 編輯 :
         ````bash=
+        cd /home/<user>/
         sudo apt-get update
         sudo apt-get install vim
+        sudo apt-get install pip
+        pip install selenium
         ````
 * docker-compose : 
     * 查看 docker-compose
