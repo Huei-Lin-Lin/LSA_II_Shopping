@@ -98,7 +98,7 @@ def getQuotationResult(url, foodList):
             driver.get(url)
     print("各食材搜尋連結", linkDict)
     print("蔬菜估價結果", QuotationResult)
-    writeJSON(QuotationResult, "./static/data/backEnd/quotation.json")
+    writeJSON(QuotationResult, "./static/data/quotation.json")
     # 卡個 5 秒在關掉
     time.sleep(2) 
     driver.quit()
@@ -124,7 +124,7 @@ def divideDICT(dict):
 
 def main():
     url = 'https://www.twfood.cc/' # 要爬蟲的網址
-    foodDict = readJSON("./static/data/backEnd/recipeData.json")
+    foodDict = readJSON("./static/data/recipeData.json")
     foodList , unitList = divideDICT(foodDict['ingredent'])
     getQuotationResult(url, foodList)
 if __name__ == '__main__':

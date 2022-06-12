@@ -63,7 +63,7 @@ def combineList(list1, list2):
     return newDICT
 
 def main():
-    foodDict = readJSON("./static/data/backEnd/recipeData.json")
+    foodDict = readJSON("./static/data/recipeData.json")
     foodList , unitList = divideDICT(foodDict['ingredent'])
 
     # 使用者指定的人數
@@ -79,6 +79,6 @@ def main():
     newDICT = dict()
     newDICT['headcount'] = peopleNum
     newDICT['ingredent'] = afterUnit
-    writeJSON(newDICT, "./static/data/backEnd/afterRecipeData.json")
+    writeJSON(newDICT, "./static/data/afterRecipeData.json")
 if __name__ == '__main__':
     main()

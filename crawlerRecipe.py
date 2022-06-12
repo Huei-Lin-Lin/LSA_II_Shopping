@@ -61,7 +61,7 @@ def getRecipeData(url, recipe):
     recipeData['headcount'] = headcount
     recipeData['ingredent'] = ingredentDict
     # 把資料寫入 json 檔
-    writeJSON(recipeData, "./static/data/backEnd/recipeData.json")
+    writeJSON(recipeData, "./static/data/recipeData.json")
     # print(recipeData)
     return headcount, ingredentDict
 
