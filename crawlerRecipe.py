@@ -22,7 +22,8 @@ def getRecipeData(url, recipe):
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--no-sandbox')   
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+    # driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+    driver = webdriver.Remote(options=options, command_executor=driverPath.driverPath)
 
     driver.get(url)
     # 搜尋
