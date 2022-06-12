@@ -1,3 +1,4 @@
 Flask
 selenium
-beautidulsoup4
+beautifulsoup4
+tk
