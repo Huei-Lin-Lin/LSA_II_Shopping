@@ -51,7 +51,7 @@
 * [Install Docker Compose CLI plugin](https://docs.docker.com/compose/install/compose-plugin/#install-the-plugin-manually)
 * 在本機測試的話，需另外安裝 selenium & flask
     <details>
-        <summary>安裝方法</summary>
+    <summary>安裝方法</summary>
     ### selenium
     ```bash=
     pip install selenium
