@@ -20,7 +20,7 @@ def combine_Num_Unit(array):
 
 def UpdateIngredUnitArr(originalQuantity, crawlHeadcount, userNum):
     sortArray = divide_Num_Unit(originalQuantity) # 整理後的食材量，使用量和單位分開
-    print(sortArray)
+    print("ArrangeData : "+sortArray)
     copyArray = copy.deepcopy(sortArray) # 複製一份 sortArray
     # 人數轉換
     for i in range(len(copyArray)):
