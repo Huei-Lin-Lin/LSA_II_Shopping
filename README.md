@@ -52,10 +52,12 @@
 * 在本機測試的話，需另外安裝 selenium & flask
     <details>
     <summary>安裝方法</summary>
+    
     ### selenium
-    ```bash=
-    pip install selenium
-    ```
+    * 安裝指令
+        ```bash=
+        pip install selenium
+        ```
     * 測試看看有沒有安裝成功
         * 建立一個 python 檔案
             ```bash=
