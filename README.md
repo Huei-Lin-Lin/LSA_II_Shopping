@@ -72,16 +72,14 @@
     * 進入此[連結](https://sites.google.com/chromium.org/driver/)選擇跟瀏覽器相同的版本
     ![](https://i.imgur.com/34eXpKM.png)
     * 選擇跟自己作業系統相同的壓縮檔
-        ![](https://i.imgur.com/K5vkSkE.png | width=70)
+        ![](https://i.imgur.com/K5vkSkE.png|width=70)
     * 解壓縮 
-        ![](https://i.imgur.com/NQzTFiM.png | width=70)
+        ![](https://i.imgur.com/NQzTFiM.png|width=70)
     * 選擇檔案要放在哪個路徑下，**要記好這個路徑在哪，等下要用到**
-        ![](https://i.imgur.com/IEeAJ6u.png | width=70)
+        ![](https://i.imgur.com/IEeAJ6u.png|width=70)
     * 把這個路徑放到 `crawlerRecipe.py`、`VegetableQuotation.py` 兩個檔案中
-        * `crawlerRecipe.py`
-            ![](https://i.imgur.com/J4qdAZd.png | width=70)
-        * `VegetableQuotation.py`
-            ![](https://i.imgur.com/3EGQpzs.png | width=70)
+        * `crawlerRecipe.py`![](https://i.imgur.com/J4qdAZd.png|width=70)
+        * `VegetableQuotation.py`![](https://i.imgur.com/3EGQpzs.png|width=70)
 
     ### Flask
     * 進入使用者家目錄
