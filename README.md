@@ -68,7 +68,7 @@
     * 下載跟 Google Chrome 同樣版本的 ChromeDriver
         * 先查看瀏覽器的版本 : 左上角的三個圓點 :point_right: 說明 :point_right: 關於 Google Chrome
             ![](https://i.imgur.com/ZgGJlbt.png)
-            ![](https://i.imgur.com/4dc1LRr.png | width=70)
+            ![](https://i.imgur.com/4dc1LRr.png|width=70)
     * 進入此[連結](https://sites.google.com/chromium.org/driver/)選擇跟瀏覽器相同的版本
     ![](https://i.imgur.com/34eXpKM.png)
     * 選擇跟自己作業系統相同的壓縮檔
