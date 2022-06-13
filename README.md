@@ -68,20 +68,20 @@
     * 下載跟 Google Chrome 同樣版本的 ChromeDriver
         * 先查看瀏覽器的版本 : 左上角的三個圓點 :point_right: 說明 :point_right: 關於 Google Chrome
             ![](https://i.imgur.com/ZgGJlbt.png)
-            ![](https://i.imgur.com/4dc1LRr.png)
+            ![](https://i.imgur.com/4dc1LRr.png | width=70)
     * 進入此[連結](https://sites.google.com/chromium.org/driver/)選擇跟瀏覽器相同的版本
     ![](https://i.imgur.com/34eXpKM.png)
     * 選擇跟自己作業系統相同的壓縮檔
-        ![](https://i.imgur.com/K5vkSkE.png =70%x)
+        ![](https://i.imgur.com/K5vkSkE.png | width=70)
     * 解壓縮 
-        ![](https://i.imgur.com/NQzTFiM.png =70%x)
+        ![](https://i.imgur.com/NQzTFiM.png | width=70)
     * 選擇檔案要放在哪個路徑下，**要記好這個路徑在哪，等下要用到**
-        ![](https://i.imgur.com/IEeAJ6u.png =70%x)
+        ![](https://i.imgur.com/IEeAJ6u.png | width=70)
     * 把這個路徑放到 `crawlerRecipe.py`、`VegetableQuotation.py` 兩個檔案中
         * `crawlerRecipe.py`
-            ![](https://i.imgur.com/J4qdAZd.png =70%x)
+            ![](https://i.imgur.com/J4qdAZd.png | width=70)
         * `VegetableQuotation.py`
-            ![](https://i.imgur.com/3EGQpzs.png =70%x)
+            ![](https://i.imgur.com/3EGQpzs.png | width=70)
 
     ### Flask
     * 進入使用者家目錄
