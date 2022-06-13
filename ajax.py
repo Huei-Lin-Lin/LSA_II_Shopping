@@ -40,6 +40,10 @@ def setDataMessage():
         with open('static/data/input.json', 'w') as f:
             json.dump(data, f) # 使用 json 物件，寫入 json 文字格式到 input.json 檔案
         f.close
+        with open('./static/data/input.json', 'r') as f:
+            data1 = json.load(f)
+        f.close
+        print(data1)
         # 進行爬蟲
         time.sleep(1)
         crawlerRecipe.main()
@@ -47,9 +51,6 @@ def setDataMessage():
         VegetableQuotation.main()
         time.sleep(1)
         ArrangeData.main()
-        with open('./static/data/input.json', 'r') as f:
-            data1 = json.load(f)
-        f.close
         with open('./static/data/quotation.json', 'r') as f:
             data2 = json.load(f)
         f.close
