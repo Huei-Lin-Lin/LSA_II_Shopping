@@ -56,7 +56,7 @@
     ### selenium
     * 安裝指令
         ```bash=
-        pip install selenium
+        pip3 install selenium
         ```
     * 測試看看有沒有安裝成功
         * 建立一個 python 檔案
@@ -82,6 +82,10 @@
         * `VegetableQuotation.py`![](https://i.imgur.com/3EGQpzs.png|width=70)
 
     ### Flask
+    * 安裝指令
+        ```bash=
+        pip3 install flask
+        ```
     * 進入使用者家目錄
         ```bash=
         cd /home/<user>
