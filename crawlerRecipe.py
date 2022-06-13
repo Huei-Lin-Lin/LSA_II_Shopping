@@ -74,7 +74,7 @@ def writeJSON(data, jsonPath):
         json.dump(data, f)
     f.close()
 
-def readJSON(path)
+def readJSON(path):
     jsonFile = open(path, 'r')
     f =  jsonFile.read() # 要先使用 read 讀取檔案
     a = json.loads(f) # 再使用 loads
@@ -86,6 +86,6 @@ def main():
 
     url = "https://icook.tw"
     headcount, ingredentDict = getRecipeData(url, recipe)
-    print(headcount, ingredentDict)
+    print("recipeData : "+headcount, ingredentDict)
 if __name__ == '__main__':
     main()

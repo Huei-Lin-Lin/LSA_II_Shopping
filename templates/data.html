@@ -47,7 +47,7 @@
                     success: function (data) {
                         $console.text("");
                         for(var k in data){
-                            $console.append(k);
+                            $console.append(k+"\n");
                             for(var v in data[k]){
                                 if(Object.keys(data[k]).length > 1){
                                     $console.append("<br>"+v+" : "+ data[k][v]);

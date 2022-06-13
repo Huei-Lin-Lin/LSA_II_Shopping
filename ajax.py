@@ -58,7 +58,7 @@ def setDataMessage():
         f.close
         data1.update(data3)
         data1.update(data2)
-        print("text : ", data1)
+        print("ajax-ext : ", data1)
         return jsonify(data1)
 
 
