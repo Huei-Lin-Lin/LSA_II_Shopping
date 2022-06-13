@@ -71,7 +71,7 @@ def getQuotationResult(url, foodList):
             if(haveLink == False):
                 print("找不到 {name} 相關的資料".format(name=foodList[i]))
                 linkDict[foodList[i]] = None # 找不到，所以此食材沒有搜尋連結
-                QuotationResult[foodList[i]] = None # 找不到，所以沒有估價結果
+                QuotationResult['Info'][foodList[i]] = None # 找不到，所以沒有估價結果
                 print("回到首頁，搜尋下一個")
                 driver.get(url)
                 continue
@@ -89,11 +89,11 @@ def getQuotationResult(url, foodList):
             name = driver.find_element(By.CLASS_NAME, "vege_price").find_element(By.CLASS_NAME, "h4").text # 菜名
             price = driver.find_element(By.XPATH, "//*[@id=\"vege_chart\"]/div[1]/div/div[1]/table/tbody/tr[5]/th[1]").text # 價錢
             unit = driver.find_element(By.XPATH, "//*[@id=\"vege_chart\"]/div[1]/div/div[1]/table/tbody/tr[5]/th[2]").text
-            QuotationResult[name] = [price, unit]
+            QuotationResult['Info'][name] = [price, unit]
             print("有抓到 {name} 的資料，回到首頁".format(name=name))
             driver.get(url)
         except:
-            QuotationResult[foodList[i]] = None
+            QuotationResult['Info'][foodList[i]] = None
             print("進入 {name} 連結失敗，回到首頁".format(name=foodList[i]))
             driver.get(url)
     print("各食材搜尋連結", linkDict)

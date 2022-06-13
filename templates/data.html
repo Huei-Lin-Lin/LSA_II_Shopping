@@ -46,10 +46,17 @@
                     type: 'GET',
                     success: function (data) {
                         $console.text("");
-                        $console.append("data[name] : " + data.appInfo.name + "<br>");
-                        $console.append("data[sum] : " + data.appInfo.sum + "<br>");
-                        // $console.append("data[headcount] : " + data.headcount + "<br>");
-                        // $console.append("data[ingredent] : " + data.ingredent + "<br>");
+                        for(var k in data){
+                            $console.append(k);
+                            for(var v in data[k]){
+                                if(Object.keys(data[k]).length > 1){
+                                    $console.append("<br>"+v+" : "+ data[k][v]);
+                                }
+                                else {
+                                    $console.append(" : "+data[k][v] + "<br>");
+                                }
+                            }
+                        }
 
                         $edtAppName.val(data.appInfo.name);
                         $edtAppSum.val(data.appInfo.sum);
@@ -71,8 +78,20 @@
                     type: 'POST',
                     success: function (data) {
                         $console.text("");
-                        $console.append("data[name] : " + data.appInfo.name + "<br>");
-                        $console.append("data[sum] : " + data.appInfo.sum + "<br>");
+                        for(var k in data){
+                            $console.append(k);
+                            for(var v in data[k]){
+                                if(Object.keys(data[k]).length > 1){
+                                    $console.append("<br>"+v+" : "+ data[k][v]);
+                                }
+                                else {
+                                    $console.append(" : "+data[k][v] + "<br>");
+                                }
+                            }
+                        }
+                        // $console.text("");
+                        // $console.append("data[name] : " + data.appInfo.name + "<br>");
+                        // $console.append("data[sum] : " + data.appInfo.sum + "<br>");
                     },
                     error: function (xhr) {
                         alert('Ajax request 發生錯誤');
