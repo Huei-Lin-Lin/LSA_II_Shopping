@@ -7,7 +7,7 @@ def divide_Num_Unit(array):
     sortArray = [] # 整理後的食材量，使用量和單位分開
     haveNum = False
     for i in range(len(array)):
-        num =  ''.join([x for x in array[i] if x.isdigit()])
+        num = ''.join([x for x in array[i] if x.isdigit()])
         if (num!=''):
             haveNum = True
         unit = ''.join([i for i in array[i] if not i.isdigit()])
