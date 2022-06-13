@@ -75,7 +75,7 @@
         ![](https://i.imgur.com/K5vkSkE.png|width=70)
     * 解壓縮 
         ![](https://i.imgur.com/NQzTFiM.png|width=70)
-    * 選擇檔案要放在哪個路徑下，**要記好這個路徑在哪，等下要用到**
+    * 選擇檔案要放在哪個路徑下，**<font color=red>要記好這個路徑在哪，等下要用到</font>**
         ![](https://i.imgur.com/IEeAJ6u.png|width=70)
     * 把這個路徑放到 `crawlerRecipe.py`、`VegetableQuotation.py` 兩個檔案中
         * `crawlerRecipe.py`![](https://i.imgur.com/J4qdAZd.png|width=70)
