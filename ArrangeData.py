@@ -37,11 +37,12 @@ def combine_Num_Unit(array):
 # 依照使用者輸入的人數做食譜人數的轉換
 # 例如：原本食譜是 2 人份，但使用者要 6 人份，在這個 function 中會做人數轉換
 def UpdateIngredUnitArr(originalQuantity, crawlHeadcount, userNum):
+    print("原本的數量", originalQuantity)
     sortArray = divide_Num_Unit(originalQuantity) # 整理後的食材量，使用量和單位分開
     copyArray = copy.deepcopy(sortArray) # 複製一份 sortArray
     # 人數轉換
     for i in range(len(copyArray)):
-        # 原本食譜的數量``
+        # 原本食譜的數量
         num = copyArray[i][0]
         if (num == ''):
             continue
@@ -52,6 +53,7 @@ def UpdateIngredUnitArr(originalQuantity, crawlHeadcount, userNum):
             copyArray[i][0] = newNum
     # 更新後的食譜
     updateQuantity = combine_Num_Unit(copyArray)
+    print("更新後的數量", updateQuantity)
     return updateQuantity
 
 def writeJSON(data, jsonPath):
@@ -94,10 +96,10 @@ def main():
     # 把更新後的數量存到 json 
     afterUnit = combineList(foodList, updateQuantity)
     newDICT = dict()
-    newDICT['headcount'] = peopleNum
+    newDICT['headcount'] = peopleNum # 使用者指定的人數
     newDICT['ingredent'] = afterUnit
     writeJSON(newDICT, "./static/data/afterRecipeData.json")
 
-    print("更新後的數量", newDICT)
+    print("更新後的字典", newDICT)
 if __name__ == '__main__':
     main()

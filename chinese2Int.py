@@ -65,7 +65,7 @@ class HanziToNumber():
                     unit = 0
                 ldig.append(dig)
             else :
-                otherStr += cndig
+                otherStr = cndig + otherStr
 
         if unit == 10:  # 處理10-19的數字
             ldig.append(10)
