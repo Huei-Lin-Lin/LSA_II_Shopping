@@ -50,7 +50,8 @@
 * [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 * [Install Docker Compose CLI plugin](https://docs.docker.com/compose/install/compose-plugin/#install-the-plugin-manually)
 * 在本機測試的話，需另外安裝 selenium & flask
-    :::spoiler 安裝方法
+    <details>
+        <summary>安裝方法</summary>
     ### selenium
     ```bash=
     pip install selenium
@@ -90,7 +91,7 @@
         mkdir -p DFlask/static DFlask/templates 
         ```
     * 開始用 Flask 寫網頁
-    :::
+    </details>
 
 ### Docker
 * 建立 `Dockerfile` : 建構 container 基本資訊
