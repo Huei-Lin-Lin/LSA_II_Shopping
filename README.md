@@ -1,4 +1,5 @@
 # LSA_II_Shopping
+---
 - [Concept Development](#Concept_Develop)
 - [Install & Settings](#install)
 - [LSA 課堂知識運用](#lsaclass)
@@ -21,9 +22,9 @@
 ├── static
 │   ├── data
 │   │   ├── afterRecipeData.json
+│   │   ├── input.json
 │   │   ├── quotation.json
-│   │   ├── recipeData.json
-│   │   └── input.json
+│   │   └── recipeData.json
 │   ├── jquery-3.6.0.min.js
 │   └── script.js
 ├── templates
@@ -123,49 +124,68 @@ pip install selenium
     
 
 ## <a id='LSAclass'>LSA 課堂知識運用</a>
-* 整合步驟
+* 執行 docker-compose
     1. 將 gitnub 的檔案 pull 下來
-    2. 將路徑改成 docker-compose 整合版路徑
-    ```bash=
-    vim driverPath.py
-    ```
-    3. 創建並啟動 docker-compose
-    ```bash=
-    docker-compose up -d --build
-    ```
+    2. 創建並啟動 docker-compose services
+        ```bash=
+        docker-compose build
+        docker-compose up
+        ```
+    3. 可查看 port
+        * `4444`: selenium chrome session
+        * `5000/data`: 網頁畫面
+        * `7900`: 密碼:`secret`, 顯示爬蟲時的網頁畫面 (超酷！！)
 * Docker : 
     * [Docker 基本指令](https://hackmd.io/@ncnu-opensource/book/https%3A%2F%2Fhackmd.io%2F%40108213034%2FB1_qNP2xc#DEMO)
-    * docker remove ``<none>`` images : 
-        ```bash=
-        docker image prune --filter="dangling=true"
-        ````
-    * 下載 images
+    * 下載 images 並啟動
         ```bash=
         docker pull selenium/standalone-chrome
         docker run -d selenium/standalone-chrome
-        docker exec -it <containerID> bash
         ```
     * 進入 container 編輯 :
-        ````bash=
+        ```bash=
+        docker exec -it <containerID> bash
         cd /home/<user>/
         sudo apt-get update
         sudo apt-get install vim
         sudo apt-get install pip
         pip install selenium
-        ````
+        pip install flask
+        ```
+    * 刪除所有 container :
+        ```bash=
+        docker pa -a
+        ```
+    * 查看所有已 stop 的 container :
+        ```bash=
+        docker container prune
+        ```
+    * docker remove `<none>` images : 
+        ```bash=
+        docker image prune --filter="dangling=true"
+        ```
 * docker-compose : 
+    * 建立並啟動 docker-compose
+        ```bash=
+        docker-compose up -d --build
+        ```
     * 查看 docker-compose
         ```bash=
         docker-compose ps
-        ````
-* directory 複製 :
-    ```bash=
-    cp -a <source>/. <destination>
-    ```
-* directory or file rename :
-    ```bash=
-    mv <old_name> <new_name>
-    ```
+        ```
+    * 結束並刪除 docker-compose
+        ```bash=
+        docker-compose down
+        ```
+* 基本指令
+    * directory 複製 :
+        ```bash=
+        cp -a <source>/. <destination>
+        ```
+    * directory or file rename :
+        ```bash=
+        mv <old_name> <new_name>
+        ```
 
 
 ## <a id='job'>Job_Assign</a>
