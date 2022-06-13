@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify, json
 import crawlerRecipe, VegetableQuotation, ArrangeData
 import time 
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 @app.route('/data')
 def webapi():
@@ -23,7 +23,7 @@ def getDataMessage():
         f.close
         data1.update(data3)
         data1.update(data2)
-        print("text : ", data1)
+        print("GET-text : ", data1)
         return jsonify(data1)  # 直接回傳 data 也可以，都是 json 格式
 
 
@@ -51,6 +51,7 @@ def setDataMessage():
         VegetableQuotation.main()
         time.sleep(1)
         ArrangeData.main()
+        
         with open('./static/data/quotation.json', 'r') as f:
             data2 = json.load(f)
         f.close
@@ -59,7 +60,7 @@ def setDataMessage():
         f.close
         data1.update(data3)
         data1.update(data2)
-        print("ajax-ext : ", data1)
+        print("POST-text : ", data1)
         return jsonify(data1)
 
 

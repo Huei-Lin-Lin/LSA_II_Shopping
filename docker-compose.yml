@@ -6,7 +6,6 @@ services:
       context: .
     ports:
       - 5000:5000
-      #- 4444:4444
     volumes:
       - .:/app
     depends_on:
