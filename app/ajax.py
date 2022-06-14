@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, json
-import crawlerRecipe, VegetableQuotation, ArrangeData
+import crawlerRecipe, VegetableQuotation, ArrangeData, connectDB
 from typing import List, Dict
 import mysql.connector
 import time
@@ -7,23 +7,22 @@ import time
 app = Flask(__name__)
 
 def test_table() -> List[Dict]:
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'mysql',
-        'port': '3306',
-        'database': 'lsa2',
-        'auth_plugin': 'mysql_native_password'
-    }
-    connection = mysql.connector.connect(**config)
-    print(connection) # 印出連線結果
-    cursor = connection.cursor(dictionary = True)
+    # config = {
+    #     'user': 'root',
+    #     'password': 'root',
+    #     'host': 'mysql',
+    #     'port': '3306',
+    #     'database': 'lsa2',
+    #     'auth_plugin': 'mysql_native_password'
+    # }
+    # connection = mysql.connector.connect(**config)
+    # print(connection) # 印出連線結果
+    mydb = connectDB.connect() # 連接 DB，讓資料自動組織成字典
+    cursor = mydb.cursor(dictionary = True)
     cursor.execute('SELECT * FROM foodprice')
-    # results = [{name: color} for (name, color) in cursor]
     results = cursor.fetchall() # 獲取返回結果
     cursor.close()
-    connection.close()
-
+    mydb.close()
     return results
 
 @app.route('/')
