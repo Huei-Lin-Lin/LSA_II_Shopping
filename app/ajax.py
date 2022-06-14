@@ -12,7 +12,7 @@ def test_table() -> List[Dict]:
         'user': 'root',
         'password': 'root',
         'host': 'mysql',
-        'port': '3306',
+        'port': '3316',
         'database': 'devopsroles',
         'auth_plugin': 'mysql_native_password'
     }
