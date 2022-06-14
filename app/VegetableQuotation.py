@@ -118,12 +118,10 @@ def queryDB(foodList):
     tempDict = dict() # 蔬菜估價結果
     for i in range(len(foodList)):
         result = operationDB.queryFoodPrice(foodList[i])
-        if(result == ()):
+        if(result == []):
             print("資料庫沒有 {food} 的資料".format(food = foodList[i]))
             tempDict[foodList[i]] = None
         else: # 資料庫有資料
-            print(result[0]['foodName'])
-            print(foodList[i])
             tempDict[foodList[i]] =  [result[0]['price'], result[0]['unit']] # 以第一筆資料為主
     return tempDict
 
