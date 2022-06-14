@@ -11,14 +11,14 @@ def test_table() -> List[Dict]:
         'user': 'root',
         'password': 'root',
         'host': 'mysql',
-        'port': '3306',
+        'port': '3316',
         'database': 'devopsroles',
         'auth_plugin': 'mysql_native_password'
     }
     connection = mysql.connector.connect(**config)
     print(connection)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM test_Table')
+    cursor.execute('SELECT * FROM test_table')
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
