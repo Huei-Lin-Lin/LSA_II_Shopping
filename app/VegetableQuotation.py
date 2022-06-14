@@ -11,6 +11,7 @@ import json
 # 引入其他 python 檔案
 import driverPath
 import operationDB
+import concurrent.futures
 
 # 檢查 element 是否存在
 def isElementExist(driver, by, value):
@@ -29,15 +30,19 @@ def getQuotationResult(url, foodList):
 
     # to supress the error messages/logs
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_argument('--headless')  # 啟動時看不到任何 UI 畫面
+    options.add_argument('--disable-gpu') #關閉 GPU 避免某些系統或是網頁出錯
+    options.add_argument('blink-settings=imagesEnabled=false')  # 不載入圖片, 提升速度
+    options.add_argument('--no-sandbox') # 以最高權限執行
+    options.add_argument("--disable-javascript") # 禁用 JavaScript
     options.add_argument('--ignore-ssl-errors=yes')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--no-sandbox')   
+    options.add_argument('--ignore-certificate-errors') 
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
-    # driver = webdriver.Remote(
-    #     options=options, 
-    #     command_executor=driverPath.path
-    # )
+    # driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+    driver = webdriver.Remote(
+        options=options, 
+        command_executor=driverPath.path
+    )
     driver.get(url)
 
     for i in range(len(foodList)):
@@ -79,7 +84,9 @@ def getQuotationResult(url, foodList):
                 print("回到首頁，搜尋下一個")
                 driver.get(url)
                 continue
+        
 
+        # ===================
         # 嘗試進入食材連結
         try: 
             link = linkDict[foodList[i]]
@@ -163,22 +170,23 @@ def main():
     foodDict = readJSON("./static/data/recipeData.json")
     foodList , unitList = divideDICT(foodDict['ingredent'])
     print(foodList)
+
     # 先查資料庫的價格
     firstResult = queryDB(foodList)
-    print("===============")
-    print("查完資料庫後的狀況",firstResult)
-    noResult, keyList, valueList = checkNotQuery(firstResult)
-    print("沒有結果", noResult)
-    print("有結果 key", keyList)
-    print("有結果 value", valueList)
-    print("===============")
+    
+    # 把還沒有查到價格的食材列出來
+    notQuery, keyList, valueList = checkNotQuery(firstResult)
     # 再爬蟲查菜價
-    crawlerKey, crawlerValue = getQuotationResult(url, noResult)
+    crawlerKey, crawlerValue = getQuotationResult(url, notQuery)
     # 把查到的結果合再一起，key 對 key，value 對 value
     keyResult = keyList + crawlerKey
     valueResult = valueList + crawlerValue
     # 把 key 跟 value 合成一個字典
-    finalResult = combineList(keyResult, valueResult)
+    tempResult = combineList(keyResult, valueResult)
+    print(tempResult)
+    finalResult = dict()
+    finalResult['info'] = tempResult
+    print(finalResult)
     writeJSON(finalResult, "./static/data/quotation.json")
 if __name__ == '__main__':
     main()
