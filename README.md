@@ -96,9 +96,9 @@
         ```bash=
         cd /home/<user>
         ```
-    * 創建一個目錄用來存放所有檔案
+    * 創建一個目錄用來存放所有檔案，`<dir_name>` 自己命名
         ```bash=
-        mkdir <dir_name> # <dir_name> 自己命名
+        mkdir <dir_name>
         cd <dir_name>
         ```
     * 進入前面創建的目錄，再創建 Flask 所需的兩個目錄
