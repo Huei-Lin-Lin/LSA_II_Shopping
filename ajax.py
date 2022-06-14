@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, json
 import crawlerRecipe, VegetableQuotation, ArrangeData
+import mysql.connector
 import time 
 
 app = Flask(__name__)

@@ -20,11 +20,12 @@ services:
     image: mysql:latest
     container_name: db_mysql
     ports:
-      3306:3306
+      - 3306:3306
     environment:
       - MYSQL_DATABASE=mydev
       - MYSQL_ROOT_USER=root
       - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_ROOT_HOST:0.0.0.0
       - MYSQL_USER=dbadmin
       - MYSQL_PASSWORD=12345678
       - TZ='Asia/Taiwan'
@@ -34,16 +35,16 @@ services:
       - ./mysql/my.conf:/etc/mysql/conf.d/my.conf # mysql設定檔
     restart: always
 
-    phpmyadmin:
-      image: phpmyadmin:latest
-      container_name: web_phpmyadmin
-      ports:
-        - 8080:80
-      environment:
-        # - PMA_ARBITRART = 1
-        - PMA_HOST=mysql
-        # - PMA_USER=root
-        # - PMA_PASSWORD=12345678
-      links:
-        - mysql
-      restart: always
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: web_phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      # - PMA_ARBITRART = 1
+      - PMA_HOST=mysql
+      # - PMA_USER=root
+      # - PMA_PASSWORD=12345678
+    links:
+      - mysql
+    restart: always

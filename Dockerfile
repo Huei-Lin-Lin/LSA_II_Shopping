@@ -24,4 +24,5 @@ RUN pip3 install --user -r requirements.txt
 # run container 時要執行的命令 COPY . /home/app
 COPY --chown=app:app . /home/app
 
-CMD python3 ./ajax.py
+# CMD python3 ./ajax.py
+CMD python3 ./operationDB.py
