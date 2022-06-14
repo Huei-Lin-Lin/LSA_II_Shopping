@@ -1,0 +1,4 @@
+flask
+selenium
+mysql-connector-python
+pymysql

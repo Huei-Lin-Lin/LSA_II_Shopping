@@ -2,38 +2,35 @@ version: '3.9'
 
 services:
   app:
-    build:
-      context: .
+    build: ./app
     ports:
       - 5000:5000
     volumes:
-      - .:/app
+      - .:/admin
     depends_on:
       - selenium
+    links:
+      - mysql
+  
   selenium:
     image: selenium/standalone-chrome
     ports:
       - 4444:4444
       - 7900:7900
     restart: always
+  
   mysql:
     image: mysql:latest
-    container_name: db_mysql
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
-      - MYSQL_DATABASE=mydev
-      - MYSQL_ROOT_USER=root
-      - MYSQL_ROOT_PASSWORD=12345678
-      - MYSQL_ROOT_HOST:0.0.0.0
-      - MYSQL_USER=dbadmin
-      - MYSQL_PASSWORD=12345678
-      - TZ='Asia/Taiwan'
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dbadmin
+      MYSQL_PASSWORD: dbadmin
+      TZ: Asia/Taiwan
     volumes:
-      - ./mysql/initdb:/docker-entrypoint-initdb.d # 啟動初期資料設定
-      - ./mysql/datadir:/var/lib/mysql # 指定資料庫資料儲存位置
-      - ./mysql/my.conf:/etc/mysql/conf.d/my.conf # mysql設定檔
-    restart: always
+      - ./db:/docker-entrypoint-initdb.d/:ro
 
   phpmyadmin:
     image: phpmyadmin:latest
