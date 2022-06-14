@@ -56,7 +56,7 @@
 * clone 此 GitHub 上的所有檔案
 * 在本機測試的話，需另外安裝 selenium & flask，若只要在 cintainer 執行，就無需安裝
 <details>
-<summary>本機測試的安裝方法</summary>
+<summary>本機測試所需的安裝</summary>
 
 ### selenium
 * 安裝指令
