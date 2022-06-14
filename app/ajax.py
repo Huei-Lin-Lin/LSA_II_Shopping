@@ -19,7 +19,7 @@ def test_table() -> List[Dict]:
     connection = mysql.connector.connect(**config)
     # print(connection)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM test_Table')
+    cursor.execute('SELECT * FROM test_table')
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
