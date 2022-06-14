@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, json
-# import crawlerRecipe, VegetableQuotation, ArrangeData
+import crawlerRecipe, VegetableQuotation, ArrangeData
 from typing import List, Dict
 import mysql.connector
 import time
@@ -12,13 +12,13 @@ def test_table() -> List[Dict]:
         'password': 'root',
         'host': 'mysql',
         'port': '3306',
-        'database': 'devopsroles',
+        'database': 'lsa2',
         'auth_plugin': 'mysql_native_password'
     }
     connection = mysql.connector.connect(**config)
     print(connection)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM test_table')
+    cursor.execute('SELECT * FROM foodprice')
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
@@ -69,12 +69,12 @@ def setDataMessage():
         f.close
         print(data1)
         # 進行爬蟲 (需先改 operationDB 的輸出，才能正確執行)
-        # time.sleep(1)
-        # crawlerRecipe.main()
-        # time.sleep(1)
-        # VegetableQuotation.main()
-        # time.sleep(1)
-        # ArrangeData.main()
+        time.sleep(1)
+        crawlerRecipe.main()
+        time.sleep(1)
+        VegetableQuotation.main()
+        time.sleep(1)
+        ArrangeData.main()
         
         with open('./static/data/quotation.json', 'r') as f:
             data2 = json.load(f)
