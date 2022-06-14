@@ -27,8 +27,9 @@
     <button id="btnPost">POST</button>
     <hr>
 
-    <h3>Console : </h3>
+    <h3>搜尋結果 : </h3>
     <div id="console"></div>
+    <div id="table"></div>
     
     <script>
         $(function () {
@@ -47,15 +48,22 @@
                     success: function (data) {
                         $console.text("");
                         for(var k in data){
-                            $console.append(k+"\n");
+                            var body = '<table><thead><tr><th colspan="2">' + k + '</th></tr></thead>';
+                            // $console.append(k+"----<br>");
                             for(var v in data[k]){
+                                body += '<tbody><tr>';
                                 if(Object.keys(data[k]).length > 1){
-                                    $console.append("<br>"+v+" : "+ data[k][v]);
+                                    body += '<td>'+v+'</td><td>'+ data[k][v]+'</td></tr>';
+                                    // $console.append(" 2 "+v+" : "+ data[k][v]+"<br>");
                                 }
                                 else {
-                                    $console.append(" : "+data[k][v] + "<br>");
+                                    body += '<td colspan="2">'+ data[k][v]+'</td></tr>';
+                                    // $console.append( data[k][v] + "<br>");
                                 }
+                                body += '</tr></tbody>';
                             }
+                            body += '</table>';
+                            $('#table').append(body);
                         }
 
                         $edtAppName.val(data.appInfo.name);
