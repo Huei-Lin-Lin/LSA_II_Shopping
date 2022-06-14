@@ -1,12 +1,12 @@
-version: '3.9'
+version: '3'
 
 services:
   app:
     build: ./app
     ports:
       - 5000:5000
-    volumes:
-      - .:/admin
+        #volumes:
+        #- .:/admin
     depends_on:
       - selenium
     links:
@@ -22,13 +22,14 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "3306:3306"
+      - 3306:3306
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: dbadmin
       MYSQL_PASSWORD: dbadmin
       TZ: Asia/Taiwan
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
 
