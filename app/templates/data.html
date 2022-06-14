@@ -41,7 +41,7 @@
 
             $btnGet.off('click').on('click', function () {
                 $.ajax({
-                    url: '/data/message',
+                    url: '/message',
                     data: {},
                     type: 'GET',
                     success: function (data) {
@@ -69,7 +69,7 @@
 
             $btnPost.off('click').on('click',function(){
                 $.ajax({
-                    url: '/data/message',
+                    url: '/message',
                     data: {
                         "app_name" : $edtAppName.val(),
                         "app_sum" : $edtAppSum.val() ,

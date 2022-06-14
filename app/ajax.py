@@ -1,16 +1,40 @@
 from flask import Flask, render_template, request, jsonify, json
 import crawlerRecipe, VegetableQuotation, ArrangeData
+from typing import List, Dict
 import mysql.connector
 import time 
+import json
 
 app = Flask(__name__)
 
-@app.route('/data')
+def test_table() -> List[Dict]:
+    config = {
+        'user': 'root',
+        'password': 'root',
+        'host': 'mysql',
+        'port': '3306',
+        'database': 'devopsroles',
+        'auth_plugin': 'mysql_native_password'
+    }
+    connection = mysql.connector.connect(**config)
+    # print(connection)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM test_Table')
+    results = [{name: color} for (name, color) in cursor]
+    cursor.close()
+    connection.close()
+
+    return results
+
+@app.route('/')
 def webapi():
     return render_template('data.html')
 
+@app.route('/data')
+def index() -> str:
+    return json.dumps({'text: test_table': test_table()})
 
-@app.route('/data/message', methods=['GET'])
+@app.route('/message', methods=['GET'])
 def getDataMessage():
     if request.method == "GET":
         with open('./static/data/input.json', 'r') as f:
@@ -28,7 +52,7 @@ def getDataMessage():
         return jsonify(data1)  # 直接回傳 data 也可以，都是 json 格式
 
 
-@app.route('/data/message', methods=['POST'])
+@app.route('/message', methods=['POST'])
 def setDataMessage():
     if request.method == "POST":
         data = {
@@ -45,13 +69,13 @@ def setDataMessage():
             data1 = json.load(f)
         f.close
         print(data1)
-        # 進行爬蟲
-        time.sleep(1)
-        crawlerRecipe.main()
-        time.sleep(1)
-        VegetableQuotation.main()
-        time.sleep(1)
-        ArrangeData.main()
+        # 進行爬蟲 (需先改 operationDB 的輸出，才能正確執行)
+        # time.sleep(1)
+        # crawlerRecipe.main()
+        # time.sleep(1)
+        # VegetableQuotation.main()
+        # time.sleep(1)
+        # ArrangeData.main()
         
         with open('./static/data/quotation.json', 'r') as f:
             data2 = json.load(f)
