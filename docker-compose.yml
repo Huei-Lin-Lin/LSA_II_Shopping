@@ -5,8 +5,6 @@ services:
     build: ./app
     ports:
       - 5000:5000
-        #volumes:
-        #- .:/admin
     depends_on:
       - selenium
     links:
@@ -22,7 +20,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - 3316:3306
+      - 3316:3316
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
     environment:
@@ -31,7 +29,6 @@ services:
       MYSQL_USER: dbadmin
       MYSQL_PASSWORD: dbadmin
       TZ: Asia/Taiwan
-      MYSQL_ROOT_HOST: '%'
 
   phpmyadmin:
     image: phpmyadmin:latest
