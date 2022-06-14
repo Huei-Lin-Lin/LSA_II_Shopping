@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
+import threading
 # 引入其他 python 檔案
 import driverPath
 
@@ -16,12 +17,24 @@ def getRecipeData(url, recipe):
     index = 0
 
     options = webdriver.ChromeOptions() 
-     # to supress the error messages/logs
+    # to supress the error messages/logs
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    options.add_argument('--ignore-ssl-errors=yes')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--no-sandbox')   
-    options.add_argument('--disable-dev-shm-usage')
+    # options.add_argument('--ignore-ssl-errors=yes')
+    # options.add_argument('--ignore-certificate-errors')
+    # options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--headless')  # 啟動時看不到任何 UI 畫面
+    options.add_argument('--disable-gpu') #關閉 GPU 避免某些系統或是網頁出錯
+    options.add_argument('blink-settings=imagesEnabled=false')  # 不載入圖片, 提升速度
+    options.add_argument('--no-sandbox') # 以最高權限執行
+    options.add_argument("--disable-javascript") # 禁用 JavaScript
+    # 禁用瀏覽器彈出視窗
+    prefs = {  
+        'profile.default_content_setting_values' :  {  
+            'notifications' : 2  
+        }  
+    }  
+    options.add_experimental_option('prefs',prefs)
+
     driver = webdriver.Remote(options=options, command_executor=driverPath.path)
 
     # 本機測試用的
@@ -38,7 +51,7 @@ def getRecipeData(url, recipe):
     )
 
     # 抓食譜連結
-    time.sleep(2)
+    # time.sleep(2)
     links = driver.find_elements(By.CLASS_NAME, "browse-recipe-link")
     for link in links:
         linkList.append(link)
@@ -56,7 +69,7 @@ def getRecipeData(url, recipe):
     for u in ingredientsUnit:
         ingredUnitArr.append(u.text)
     # 卡個 5 秒在關掉
-    time.sleep(2) 
+    # time.sleep(2) 
     driver.quit()
     ingredentDict = combineList(ingredArr,ingredUnitArr)
     recipeData = dict()
