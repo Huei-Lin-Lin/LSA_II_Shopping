@@ -42,6 +42,9 @@ def getRecipeData(url, recipe):
 
     driver.get(url)
     # 搜尋
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.NAME, "q"))
+    )
     search = driver.find_element(By.NAME, "q")
     search.clear()
     search.send_keys(recipe)
