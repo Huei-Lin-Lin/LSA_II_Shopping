@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, jsonify, json
 # import crawlerRecipe, VegetableQuotation, ArrangeData
 from typing import List, Dict
 import mysql.connector
-import time 
-import json
+import time
 
 app = Flask(__name__)
 
@@ -11,15 +10,15 @@ def test_table() -> List[Dict]:
     config = {
         'user': 'root',
         'password': 'root',
-        'host': 'mysql',
+        'host': 'db',
         'port': '3306',
         'database': 'devopsroles',
         'auth_plugin': 'mysql_native_password'
     }
     connection = mysql.connector.connect(**config)
-    # print(connection)
+    print(connection)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM test_table')
+    cursor.execute('SELECT * FROM test_Table')
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
