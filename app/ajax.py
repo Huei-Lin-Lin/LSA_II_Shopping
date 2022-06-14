@@ -16,10 +16,11 @@ def test_table() -> List[Dict]:
         'auth_plugin': 'mysql_native_password'
     }
     connection = mysql.connector.connect(**config)
-    print(connection)
-    cursor = connection.cursor()
+    print(connection) # 印出連線結果
+    cursor = connection.cursor(dictionary = True)
     cursor.execute('SELECT * FROM foodprice')
-    results = [{name: color} for (name, color) in cursor]
+    # results = [{name: color} for (name, color) in cursor]
+    results = cursor.fetchall() # 獲取返回結果
     cursor.close()
     connection.close()
 

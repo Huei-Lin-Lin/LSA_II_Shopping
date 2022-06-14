@@ -31,4 +31,6 @@ def queryFoodPrice(str):
     sql = 'select * from foodprice WHERE foodName LIKE \'%{str}%\' '.format(str=str) # 定義 SQL 語句
     cursor.execute(sql) # 執行 SQL 語句
     result = cursor.fetchall() # 獲取返回結果
+    cursor.close()
+    connectDB.mydb.close()
     return result
