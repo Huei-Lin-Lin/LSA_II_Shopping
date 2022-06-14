@@ -19,9 +19,9 @@ def getRecipeData(url, recipe):
     options = webdriver.ChromeOptions() 
     # to supress the error messages/logs
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    # options.add_argument('--ignore-ssl-errors=yes')
-    # options.add_argument('--ignore-certificate-errors')
-    # options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--ignore-ssl-errors=yes')
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--disable-dev-shm-usage')
     # options.add_argument('--headless')  # 啟動時看不到任何 UI 畫面
     options.add_argument('--disable-gpu') #關閉 GPU 避免某些系統或是網頁出錯
     options.add_argument('blink-settings=imagesEnabled=false')  # 不載入圖片, 提升速度
