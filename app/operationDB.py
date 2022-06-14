@@ -1,7 +1,6 @@
-from typing import List, Dict
-import mysql.connector
-
-# import connectDB
+import connectDB
+# from typing import List, Dict
+# import mysql.connector
 
 # 連接 DB
 connectDB.mydb
@@ -16,14 +15,7 @@ def queryFoodPrice(str):
         'database': 'devopsroles',
         'auth_plugin': 'mysql_native_password'
     }
-    connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
-    # cursor = connectDB.cursor # 讓資料自動組織成字典
-    # sql = 'select * from foodprice WHERE foodName LIKE \'%{str}%\' '.format(str=str) # 定義 SQL 語句
-    # cursor.execute(sql) # 執行 SQL 語句
-    # result = cursor.fetchall() # 獲取返回結果
     cursor.execute('SELECT * FROM test_Table')
     results = [{name: color} for (name, color) in cursor]
-    cursor.close()
-    connection.close()
     return result

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, json
-import crawlerRecipe, VegetableQuotation, ArrangeData
+# import crawlerRecipe, VegetableQuotation, ArrangeData
 from typing import List, Dict
 import mysql.connector
 import time 
