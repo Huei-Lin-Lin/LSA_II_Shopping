@@ -93,7 +93,7 @@ def main():
 
     # 食譜中的人數
     # headcount = foodDict['headcount']
-    headcount = foodDict['準備人數']
+    headcount = foodDict['食譜人數']
     updateQuantity = UpdateIngredUnitArr(unitList, headcount, peopleNum)
     
     # 把更新後的數量存到 json 
