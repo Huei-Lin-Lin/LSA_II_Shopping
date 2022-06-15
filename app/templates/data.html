@@ -5,30 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='UI.CSS') }}" rel="stylesheet" type="text/css"  />
     <script src="../static/jquery-3.6.0.min.js"></script>
-    <title>WebAPI</title>
+    <title>Cookie Searching</title>
 </head>
 
 <body>
-    <h1>DATA : API</h1>
+    <!--header-->
+    <header class="main-header clearfix" role="header">
+        <div class="logo">
+            <a><em>Cookie</em> Searching </a>
+        </div>
+    </header>
 
-    <h2>API : GET</h2>
-    <button id='btnGet'>GET</button>
-
-    <hr>
-
-    <h2>Shopping Web</h2>
-    <p>輸入料理名稱 :
-        <input id="app_name" name="app_name" type="text" />
-    </p>
-    <p>輸入需準備幾人份 :
-        <input id="app_sum" name="app_sum" type="number" />
-    </p>
-    <button id="btnPost">POST</button>
-    <hr>
-
-    <h3>搜尋結果 : </h3>
-    <div id="console"></div>
+    <section class="section main-banner" id="top" data-section="section1">
+        <video autoplay muted loop id="bg-video">
+            <!-- <source src="../static/images/course-video.mp4" type="video/mp4" /> -->
+        </video>
+  
+        <div class="video-overlay header-text">
+            <div class="caption">
+                <h6>準備開始你的料理之旅</h6>
+                <label>輸入料理名稱:</label>
+                <input id="app_name" name="app_name" type="text" /><br /><br />
+                
+                <label>輸入需準備的人數:</label>
+                <input  id="app_sum" name="app_sum" type="number" /><br /><br />
+                
+                <button class="main-button" id="btnGet">Search</button>
+                <h2><em>搜尋</em>結果 </h2>
+            </div>
+        </div>
+    </section>
     <div id="table"></div>
     
     <script>
@@ -87,19 +95,23 @@
                     success: function (data) {
                         $console.text("");
                         for(var k in data){
-                            $console.append(k);
+                            var body = '<table><thead><tr><th colspan="2">' + k + '</th></tr></thead>';
+                            // $console.append(k+"----<br>");
                             for(var v in data[k]){
+                                body += '<tbody><tr>';
                                 if(Object.keys(data[k]).length > 1){
-                                    $console.append("<br>"+v+" : "+ data[k][v]);
+                                    body += '<td>'+v+'</td><td>'+ data[k][v]+'</td></tr>';
+                                    // $console.append(" 2 "+v+" : "+ data[k][v]+"<br>");
                                 }
                                 else {
-                                    $console.append(" : "+data[k][v] + "<br>");
+                                    body += '<td colspan="2">'+ data[k][v]+'</td></tr>';
+                                    // $console.append( data[k][v] + "<br>");
                                 }
+                                body += '</tr></tbody>';
                             }
+                            body += '</table>';
+                            $('#table').append(body);
                         }
-                        // $console.text("");
-                        // $console.append("data[name] : " + data.appInfo.name + "<br>");
-                        // $console.append("data[sum] : " + data.appInfo.sum + "<br>");
                     },
                     error: function (xhr) {
                         alert('Ajax request 發生錯誤');
