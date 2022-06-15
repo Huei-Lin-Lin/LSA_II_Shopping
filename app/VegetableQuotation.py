@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import json
 # 引入其他 python 檔案
-import driverPath
+import myConfig
 import operationDB
 import concurrent.futures
 
@@ -38,10 +38,10 @@ def getQuotationResult(url, foodList):
     options.add_argument('--ignore-ssl-errors=yes')
     options.add_argument('--ignore-certificate-errors') 
     options.add_argument('--disable-dev-shm-usage')
-    # driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+    # driver = webdriver.Chrome(options=options, service=myConfig.driverPath)
     driver = webdriver.Remote(
         options=options, 
-        command_executor=driverPath.path
+        command_executor=myConfig.path
     )
     driver.get(url)
 

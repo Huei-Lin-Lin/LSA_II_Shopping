@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 import threading
 # 引入其他 python 檔案
-import driverPath
+import myConfig
 
 def getRecipeData(url, recipe):
     # 變數
@@ -35,10 +35,10 @@ def getRecipeData(url, recipe):
     }  
     options.add_experimental_option('prefs',prefs)
 
-    driver = webdriver.Remote(options=options, command_executor=driverPath.path)
+    driver = webdriver.Remote(options=options, command_executor=myConfig.path)
 
     # 本機測試用的
-    # driver = webdriver.Chrome(options=options, service=driverPath.driverPath)
+    # driver = webdriver.Chrome(options=options, service=myConfig.driverPath)
 
     driver.get(url)
     # 搜尋
