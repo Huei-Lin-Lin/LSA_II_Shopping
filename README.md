@@ -23,6 +23,7 @@
 │   ├── operationDB.py
 │   ├── requirements.txt
 │   ├── static
+│   │   ├── UI.css
 │   │   ├── data
 │   │   │   ├── afterRecipeData.json
 │   │   │   ├── input.json
@@ -33,7 +34,7 @@
 │   └── templates
 │       └── data.html
 ├── db
-│   └── init.sql
+│   └── foodprice.sql
 └── docker-compose.yml
 ```
 
@@ -44,7 +45,7 @@
 但平時大家都只會準備一人份的量，突然要準備那麼多人的份量並計算所花費的價錢，可能都沒有經驗，所以我們想試試看能不能做出能讓人根據菜單及人數推估出來食材份量及總花費的網頁工具。
 
 ### 功能
-* 查詢料理方式
+* 查詢料理及人數
 * 列出食材清單
 * 提供食材現價
 
