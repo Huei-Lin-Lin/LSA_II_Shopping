@@ -183,7 +183,8 @@ def main():
     tempResult = combineList(keyResult, valueResult)
     print(tempResult)
     finalResult = dict()
-    finalResult['info'] = tempResult
+    # finalResult['info'] = tempResult
+    finalResult['估價'] = tempResult
     print(finalResult)
     writeJSON(finalResult, "./static/data/quotation.json")
 if __name__ == '__main__':

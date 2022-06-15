@@ -56,6 +56,8 @@
                     type: 'GET',
                     success: function (data) {
                         $console.text("");
+                        // 把 #table div 清空，這樣再次搜尋就不會繼續顯示之前的搜尋結果
+                        $('#table').append(""); 
                         for(var k in data){
                             var body = '<table><thead><tr><th colspan="2">' + k + '</th></tr></thead>';
                             // $console.append(k+"----<br>");

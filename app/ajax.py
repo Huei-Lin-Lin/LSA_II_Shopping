@@ -43,10 +43,16 @@ def getDataMessage():
 @app.route('/message', methods=['POST'])
 def setDataMessage():
     if request.method == "POST":
+        # data = {
+        #     'appInfo': {
+        #         'name': request.form['app_name'],
+        #         'sum': request.form['app_sum']
+        #     }
+        # }
         data = {
-            'appInfo': {
-                'name': request.form['app_name'],
-                'sum': request.form['app_sum']
+            '要查詢的資料': {
+                '料理名稱': request.form['app_name'],
+                '準備人數': request.form['app_sum']
             }
         }
         print(type(data))
