@@ -52,15 +52,20 @@ def getRecipeData(url, recipe):
         EC.presence_of_element_located((By.CLASS_NAME, "browse-recipe-link"))
     )
 
-    # 抓食譜連結
-    # time.sleep(2)
-    links = driver.find_elements(By.CLASS_NAME, "browse-recipe-link")
-    for link in links:
-        linkList.append(link)
+    
+    # 抓食譜連結，進入頁面
+    link = driver.find_element(By.CLASS_NAME, "browse-recipe-link")
+    link.click()
 
-    # 選定食譜後，進入頁面
-    linkEnter = linkList[index]
-    linkEnter.click()
+    # # 抓食譜連結
+    # # time.sleep(2)
+    # links = driver.find_elements(By.CLASS_NAME, "browse-recipe-link")
+    # for link in links:
+    #     linkList.append(link)
+
+    # # 選定食譜後，進入頁面
+    # linkEnter = linkList[index]
+    # linkEnter.click()
     
     WebDriverWait(driver, 50).until(
         EC.presence_of_element_located((By.CLASS_NAME, "ingredient-name"))
