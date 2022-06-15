@@ -169,7 +169,6 @@ def combineList(list1, list2):
 def main():
     url = 'https://www.twfood.cc/' # 要爬蟲的網址
     foodDict = readJSON("./static/data/recipeData.json")
-    # foodList , unitList = divideDICT(foodDict['ingredent'])
     foodList , unitList = divideDICT(foodDict['料理食材'])
     print(foodList)
 
@@ -187,7 +186,6 @@ def main():
     tempResult = combineList(keyResult, valueResult)
     print(tempResult)
     finalResult = dict()
-    # finalResult['info'] = tempResult
     finalResult['估價'] = tempResult
     print(finalResult)
     writeJSON(finalResult, "./static/data/quotation.json")

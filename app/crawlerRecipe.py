@@ -83,8 +83,6 @@ def getRecipeData(url, recipe):
     driver.quit()
     ingredentDict = combineList(ingredArr,ingredUnitArr)
     recipeData = dict()
-    # recipeData['headcount'] = headcount
-    # recipeData['ingredent'] = ingredentDict
     recipeData['食譜人數'] = headcount
     recipeData['料理食材'] = ingredentDict
     # 把資料寫入 json 檔

@@ -83,25 +83,20 @@ def combineList(list1, list2):
 
 def main():
     foodDict = readJSON("./static/data/recipeData.json")
-    # foodList , unitList = divideDICT(foodDict['ingredent'])
     foodList , unitList = divideDICT(foodDict['料理食材'])
 
     # 使用者指定的人數
     inputData = readJSON('./static/data/input.json')
-    # peopleNum = inputData["appInfo"]["sum"]
     peopleNum = inputData["要查詢的資料"]["準備人數"]
 
     # 食譜中的人數
-    # headcount = foodDict['headcount']
     headcount = foodDict['食譜人數']
     updateQuantity = UpdateIngredUnitArr(unitList, headcount, peopleNum)
     
     # 把更新後的數量存到 json 
     afterUnit = combineList(foodList, updateQuantity)
     newDICT = dict()
-    # newDICT['headcount'] = peopleNum # 使用者指定的人數
     newDICT['準備人數'] = peopleNum # 使用者指定的人數
-    # newDICT['ingredent'] = afterUnit
     newDICT['料理食材'] = afterUnit
     writeJSON(newDICT, "./static/data/afterRecipeData.json")
 
