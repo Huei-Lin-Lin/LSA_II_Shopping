@@ -106,7 +106,6 @@ def readJSON(path):
 
 def main():
     inputData = readJSON('./static/data/input.json')
-    # recipe = inputData["appInfo"]["name"]
     recipe = inputData["要查詢的資料"]["料理名稱"]
 
     url = "https://icook.tw"
