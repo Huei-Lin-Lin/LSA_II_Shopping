@@ -61,7 +61,7 @@ def getQuotationResult(url, foodList):
             WebDriverWait(driver, 50, 0.5).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "button_logo"))
             )
-            time.sleep(2)
+            time.sleep(1)
             # 如果有 weekTrend 代表直接跳出食材搜尋結果
             if (isElementExist(driver, By.ID,  "weekTrend")):
                 print("直接給食材搜尋結果")
@@ -69,7 +69,10 @@ def getQuotationResult(url, foodList):
                 haveLink = True
                 raise Exception('out')
             # 抓 link 
-            time.sleep(2)
+            # time.sleep(1)
+            WebDriverWait(driver, 50, 0.5).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "text-left"))
+            )
             link = driver.find_element(By.CLASS_NAME, "text-left").find_element(By.TAG_NAME, "a").get_attribute("href")
             linkDict[foodList[i]] = link # 將抓到的連結存起來
             haveLink = True

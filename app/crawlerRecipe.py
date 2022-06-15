@@ -49,7 +49,7 @@ def getRecipeData(url, recipe):
     search.send_keys(recipe)
     search.send_keys(Keys.RETURN)
     WebDriverWait(driver, 50).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "browse-title-name"))
+        EC.presence_of_element_located((By.CLASS_NAME, "browse-recipe-link"))
     )
 
     # 抓食譜連結
@@ -62,6 +62,9 @@ def getRecipeData(url, recipe):
     linkEnter = linkList[index]
     linkEnter.click()
     
+    WebDriverWait(driver, 50).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "ingredient-name"))
+    )
     # 抓食材資料
     headcount = driver.find_element(By.CLASS_NAME, "num").text
     ingredients = driver.find_elements(By.CLASS_NAME, "ingredient-name")
