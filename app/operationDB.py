@@ -1,7 +1,5 @@
 import connectDB
 
-
-
 # 查詢資料庫菜價
 def queryFoodPrice(str):
     mydb = connectDB.connect() # 連接 DB，讓資料自動組織成字典

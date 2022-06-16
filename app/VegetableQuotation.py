@@ -87,9 +87,7 @@ def getQuotationResult(url, foodList):
                 print("回到首頁，搜尋下一個")
                 driver.get(url)
                 continue
-        
 
-        # ===================
         # 嘗試進入食材連結
         try: 
             link = linkDict[foodList[i]]
@@ -165,7 +163,6 @@ def combineList(list1, list2):
     newDICT = dict(zip(list1,list2))
     return newDICT
 
-
 def main():
     url = 'https://www.twfood.cc/' # 要爬蟲的網址
     foodDict = readJSON("./static/data/recipeData.json")
@@ -174,7 +171,6 @@ def main():
 
     # 先查資料庫的價格
     firstResult = queryDB(foodList)
-    
     # 把還沒有查到價格的食材列出來
     notQuery, keyList, valueList = checkNotQuery(firstResult)
     # 再爬蟲查菜價

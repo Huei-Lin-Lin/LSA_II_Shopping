@@ -48,11 +48,10 @@ def getRecipeData(url, recipe):
     search.clear()
     search.send_keys(recipe)
     search.send_keys(Keys.RETURN)
+
     WebDriverWait(driver, 50).until(
         EC.presence_of_element_located((By.CLASS_NAME, "browse-recipe-link"))
     )
-
-    
     # 抓食譜連結，進入頁面
     link = driver.find_element(By.CLASS_NAME, "browse-recipe-link")
     link.click()
