@@ -105,12 +105,7 @@
                             for(var v in data[k]){
                                 body += '<tbody><tr>';
                                 if(Object.keys(data[k]).length > 1){
-                                    if (data[k][v] > 1){
-                                        body += '<td>'+v+'</td><td>'+ data[k][v][0]+'</td><td>'+ data[k][v][1]+'</td></tr>';
-                                    }
-                                    else{
-                                        body += '<td>'+v+'</td><td>'+ data[k][v]+'</td></tr>';
-                                    }
+                                     body += '<td>'+v+'</td><td>'+ data[k][v]+'</td></tr>';
                                     // $console.append(" 2 "+v+" : "+ data[k][v]+"<br>");
                                 }
                                 else {
