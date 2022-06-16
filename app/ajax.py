@@ -71,15 +71,10 @@ def setDataMessage():
         with open('./static/data/afterRecipeData.json', 'r') as f:
             data3 = json.load(f)
         f.close
-        # data1.update(data3)
-        # data1.update(data2)
-        # print("POST-text : ", data1)
-        # return jsonify(data1)
-        data3.update(data2)
-        data3.update(data1)
-        print("POST-text : ", data3)
-        return jsonify(data3)
-
+        data1.update(data3)
+        data1.update(data2)
+        print("POST-text : ", data1)
+        return jsonify(data1)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', debug=True)
