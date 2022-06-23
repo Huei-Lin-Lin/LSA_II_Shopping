@@ -50,21 +50,21 @@
 5. 可查看以下 port
     * selenium chrome session
         * `http://{your IP}:4444`
-        * ![port 4444](https://i.imgur.com/myb0WQN.png)
+        * ![](https://i.imgur.com/myb0WQN.png)
     * 網頁畫面
         * `http://{your IP}:5000`
         * ![](https://i.imgur.com/6wC4nVx.png)
         * 輸入料理資料
-        * ![輸入料理資料](https://i.imgur.com/975V8GD.png)
+        * ![](https://i.imgur.com/975V8GD.png)
         * 顯示爬蟲結果
-        * ![顯示爬蟲結果](https://i.imgur.com/q7YUMe4.png)
+        * ![](https://i.imgur.com/q7YUMe4.png)
     * 顯示爬蟲時的網頁畫面
         * `http://{your IP}:7900`
         * ![](https://i.imgur.com/pqH6OaU.png)
         * 密碼：`secret` 
-        * ![輸入密碼](https://i.imgur.com/CmKb6ci.png)
+        * ![](https://i.imgur.com/CmKb6ci.png)
         * 爬蟲畫面
-        * ![爬蟲畫面](https://i.imgur.com/gYSA9QE.png)
+        * ![](https://i.imgur.com/gYSA9QE.png)
     * phpMyAdmin，查看資料庫
         * `http://{your IP}:8080`
         * 帳號：root
